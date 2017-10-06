@@ -249,7 +249,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../deep_learning_nlp_tutorial.html">Deep Learning for NLP with Pytorch</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../nlp/pytorch_tutorial.html">Introduction to PyTorch</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../nlp/pytorch_tutorial.html#introduction-to-torch-s-tensor-library">Introduction to Torch&#8217;s tensor library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../nlp/pytorch_tutorial.html#introduction-to-torch-s-tensor-library">Introduction to Torch’s tensor library</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../nlp/pytorch_tutorial.html#creating-tensors">Creating Tensors</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../nlp/pytorch_tutorial.html#operations-with-tensors">Operations with Tensors</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../nlp/pytorch_tutorial.html#reshaping-tensors">Reshaping Tensors</a></li>
@@ -281,7 +281,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../nlp/sequence_models_tutorial.html">Sequence Models and Long-Short Term Memory Networks</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../nlp/sequence_models_tutorial.html#lstm-s-in-pytorch">LSTM&#8217;s in Pytorch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../nlp/sequence_models_tutorial.html#lstm-s-in-pytorch">LSTM’s in Pytorch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../nlp/sequence_models_tutorial.html#example-an-lstm-for-part-of-speech-tagging">Example: An LSTM for Part-of-Speech Tagging</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../nlp/sequence_models_tutorial.html#exercise-augmenting-the-lstm-part-of-speech-tagger-with-character-level-features">Exercise: Augmenting the LSTM part-of-speech tagger with character-level features</a></li>
 </ul>
@@ -365,6 +365,21 @@
 <li class="toctree-l2"><a class="reference internal" href="../../intermediate/reinforcement_q_learning.html#training">Training</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../intermediate/reinforcement_q_learning.html#hyperparameters-and-utilities">Hyperparameters and utilities</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../intermediate/reinforcement_q_learning.html#training-loop">Training loop</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../intermediate/dist_tuto.html">Writing Distributed Applications with PyTorch</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../intermediate/dist_tuto.html#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intermediate/dist_tuto.html#point-to-point-communication">Point-to-Point Communication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intermediate/dist_tuto.html#collective-communication">Collective Communication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intermediate/dist_tuto.html#distributed-training">Distributed Training</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intermediate/dist_tuto.html#our-own-ring-allreduce">Our Own Ring-Allreduce</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../intermediate/dist_tuto.html#advanced-topics">Advanced Topics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intermediate/dist_tuto.html#communication-backends">Communication Backends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../intermediate/dist_tuto.html#initialization-methods">Initialization Methods</a></li>
 </ul>
 </li>
 </ul>
@@ -499,35 +514,13 @@ Tensors can also be used on a GPU to accelerate computing.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span><span class="mf">1.6081e-14</span>  <span class="mf">1.5525e-41</span>  <span class="mf">8.8476e-38</span>
- <span class="mf">0.0000e+00</span>  <span class="mf">1.0065e+17</span>  <span class="mf">0.0000e+00</span>
- <span class="mf">2.8026e-45</span>  <span class="mf">1.5525e-41</span>  <span class="mf">1.0065e+17</span>
- <span class="mf">0.0000e+00</span>  <span class="mf">4.6243e-44</span>  <span class="mf">0.0000e+00</span>
- <span class="mf">8.1728e-38</span>  <span class="mf">0.0000e+00</span>  <span class="mf">1.0065e+17</span>
-<span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">5</span><span class="n">x3</span><span class="p">]</span>
-</pre></div>
-</div>
 <p>Construct a randomly initialized matrix</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="mf">0.3129</span>  <span class="mf">0.9342</span>  <span class="mf">0.9616</span>
- <span class="mf">0.7383</span>  <span class="mf">0.0806</span>  <span class="mf">0.4812</span>
- <span class="mf">0.3423</span>  <span class="mf">0.0733</span>  <span class="mf">0.3207</span>
- <span class="mf">0.6953</span>  <span class="mf">0.9285</span>  <span class="mf">0.1022</span>
- <span class="mf">0.4641</span>  <span class="mf">0.7445</span>  <span class="mf">0.3699</span>
-<span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">5</span><span class="n">x3</span><span class="p">]</span>
-</pre></div>
-</div>
 <p>Get its size</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
-</pre></div>
-</div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -537,32 +530,14 @@ Tensors can also be used on a GPU to accelerate computing.</p>
 </div>
 <div class="section" id="operations">
 <h3>Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h3>
-<p>There are multiple syntaxes for operations. Let&#8217;s see addition as an example</p>
+<p>There are multiple syntaxes for operations. Let’s see addition as an example</p>
 <p>Addition: syntax 1</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="mf">0.3917</span>  <span class="mf">1.8496</span>  <span class="mf">1.4277</span>
- <span class="mf">1.1302</span>  <span class="mf">0.6874</span>  <span class="mf">1.3269</span>
- <span class="mf">1.0373</span>  <span class="mf">0.1904</span>  <span class="mf">1.2058</span>
- <span class="mf">0.9007</span>  <span class="mf">1.7532</span>  <span class="mf">0.6824</span>
- <span class="mf">1.2130</span>  <span class="mf">1.4414</span>  <span class="mf">1.1531</span>
-<span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">5</span><span class="n">x3</span><span class="p">]</span>
-</pre></div>
-</div>
 <p>Addition: syntax 2</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
-</pre></div>
-</div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="mf">0.3917</span>  <span class="mf">1.8496</span>  <span class="mf">1.4277</span>
- <span class="mf">1.1302</span>  <span class="mf">0.6874</span>  <span class="mf">1.3269</span>
- <span class="mf">1.0373</span>  <span class="mf">0.1904</span>  <span class="mf">1.2058</span>
- <span class="mf">0.9007</span>  <span class="mf">1.7532</span>  <span class="mf">0.6824</span>
- <span class="mf">1.2130</span>  <span class="mf">1.4414</span>  <span class="mf">1.1531</span>
-<span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">5</span><span class="n">x3</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Addition: giving an output tensor</p>
@@ -571,28 +546,10 @@ Tensors can also be used on a GPU to accelerate computing.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="mf">0.3917</span>  <span class="mf">1.8496</span>  <span class="mf">1.4277</span>
- <span class="mf">1.1302</span>  <span class="mf">0.6874</span>  <span class="mf">1.3269</span>
- <span class="mf">1.0373</span>  <span class="mf">0.1904</span>  <span class="mf">1.2058</span>
- <span class="mf">0.9007</span>  <span class="mf">1.7532</span>  <span class="mf">0.6824</span>
- <span class="mf">1.2130</span>  <span class="mf">1.4414</span>  <span class="mf">1.1531</span>
-<span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">5</span><span class="n">x3</span><span class="p">]</span>
-</pre></div>
-</div>
 <p>Addition: in-place</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># adds x to y</span>
 <span class="n">y</span><span class="o">.</span><span class="n">add_</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="mf">0.3917</span>  <span class="mf">1.8496</span>  <span class="mf">1.4277</span>
- <span class="mf">1.1302</span>  <span class="mf">0.6874</span>  <span class="mf">1.3269</span>
- <span class="mf">1.0373</span>  <span class="mf">0.1904</span>  <span class="mf">1.2058</span>
- <span class="mf">0.9007</span>  <span class="mf">1.7532</span>  <span class="mf">0.6824</span>
- <span class="mf">1.2130</span>  <span class="mf">1.4414</span>  <span class="mf">1.1531</span>
-<span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">5</span><span class="n">x3</span><span class="p">]</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -602,15 +559,6 @@ For example: <code class="docutils literal"><span class="pre">x.copy_(y)</span><
 </div>
 <p>You can use standard numpy-like indexing with all bells and whistles!</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
-</pre></div>
-</div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="mf">0.9342</span>
- <span class="mf">0.0806</span>
- <span class="mf">0.0733</span>
- <span class="mf">0.9285</span>
- <span class="mf">0.7445</span>
-<span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
 <p><strong>Read later:</strong></p>
@@ -631,38 +579,14 @@ locations, and changing one will change the other.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="mi">1</span>
- <span class="mi">1</span>
- <span class="mi">1</span>
- <span class="mi">1</span>
- <span class="mi">1</span>
-<span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">5</span><span class="p">]</span>
-</pre></div>
-</div>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-</pre></div>
-</div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="mf">1.</span>  <span class="mf">1.</span>  <span class="mf">1.</span>  <span class="mf">1.</span>  <span class="mf">1.</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>See how the numpy array changed in value.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">add_</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-</pre></div>
-</div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="mi">2</span>
- <span class="mi">2</span>
- <span class="mi">2</span>
- <span class="mi">2</span>
- <span class="mi">2</span>
-<span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">5</span><span class="p">]</span>
-
-<span class="p">[</span> <span class="mf">2.</span>  <span class="mf">2.</span>  <span class="mf">2.</span>  <span class="mf">2.</span>  <span class="mf">2.</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -675,17 +599,6 @@ locations, and changing one will change the other.</p>
 <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">a</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-</pre></div>
-</div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="mf">2.</span>  <span class="mf">2.</span>  <span class="mf">2.</span>  <span class="mf">2.</span>  <span class="mf">2.</span><span class="p">]</span>
-
- <span class="mi">2</span>
- <span class="mi">2</span>
- <span class="mi">2</span>
- <span class="mi">2</span>
- <span class="mi">2</span>
-<span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">DoubleTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>All the Tensors on the CPU except a CharTensor support converting to
@@ -702,7 +615,7 @@ NumPy and back.</p>
     <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.005 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.000 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/tensor_tutorial.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">tensor_tutorial.py</span></code></a></div>
@@ -767,7 +680,7 @@ NumPy and back.</p>
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

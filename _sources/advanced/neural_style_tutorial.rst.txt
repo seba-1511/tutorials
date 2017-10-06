@@ -155,11 +155,6 @@ We will have recourse to the following packages:
 
 
 
-
-
-
-
-
 Cuda
 ~~~~
 
@@ -181,11 +176,6 @@ CPU (e.g. to use numpy), we use the ``.cpu()`` method. Finally,
 
     use_cuda = torch.cuda.is_available()
     dtype = torch.cuda.FloatTensor if use_cuda else torch.FloatTensor
-
-
-
-
-
 
 
 
@@ -235,11 +225,6 @@ a neural network:
 
 
 
-
-
-
-
-
 Imported PIL images has values between 0 and 255. Transformed into torch
 tensors, their values are between 0 and 1. This is an important detail:
 neural networks from torch library are trained with 0-1 tensor image. If
@@ -279,24 +264,6 @@ reconvert them into PIL images:
 
     plt.figure()
     imshow(content_img.data, title='Content Image')
-
-
-
-
-
-.. rst-class:: sphx-glr-horizontal
-
-
-    *
-
-      .. image:: /advanced/images/sphx_glr_neural_style_tutorial_001.png
-            :scale: 47
-
-    *
-
-      .. image:: /advanced/images/sphx_glr_neural_style_tutorial_002.png
-            :scale: 47
-
 
 
 
@@ -357,11 +324,6 @@ content losses.
 
 
 
-
-
-
-
-
 .. Note::
    **Important detail**: this module, although it is named ``ContentLoss``,
    is not a true PyTorch Loss function. If you want to define your content
@@ -406,11 +368,6 @@ becomes easy to implement our module:
 
 
 
-
-
-
-
-
 The longer is the feature maps dimension :math:`N`, the bigger are the
 values of the gram matrix. Therefore, if we don't normalize by :math:`N`,
 the loss computed at the first layers (before pooling layers) will have
@@ -449,11 +406,6 @@ parameter:
 
 
 
-
-
-
-
-
 Load the neural network
 ~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -476,11 +428,6 @@ just interested by ``features``:
     # move it to the GPU if possible:
     if use_cuda:
         cnn = cnn.cuda()
-
-
-
-
-
 
 
 
@@ -573,11 +520,6 @@ right order:
 
 
 
-
-
-
-
-
 .. Note::
    In the paper they recommend to change max pooling layers into
    average pooling. With AlexNet, that is a small network compared to VGG19
@@ -615,14 +557,6 @@ noise, or it can also be a copy of the content-image.
 
 
 
-
-
-.. image:: /advanced/images/sphx_glr_neural_style_tutorial_003.png
-    :align: center
-
-
-
-
 Gradient descent
 ~~~~~~~~~~~~~~~~
 
@@ -651,11 +585,6 @@ constructor:
         input_param = nn.Parameter(input_img.data)
         optimizer = optim.LBFGS([input_param])
         return input_param, optimizer
-
-
-
-
-
 
 
 
@@ -723,11 +652,6 @@ the 0-1 interval.
         return input_param.data
 
 
-
-
-
-
-
 Finally, run the algorithm
 
 
@@ -744,38 +668,7 @@ Finally, run the algorithm
     plt.ioff()
     plt.show()
 
-
-
-.. image:: /advanced/images/sphx_glr_neural_style_tutorial_004.png
-    :align: center
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    Building the style transfer model..
-    Optimizing..
-    run [50]:
-    Style Loss : 0.158071 Content Loss: 0.473276
-
-    run [100]:
-    Style Loss : 0.043806 Content Loss: 0.341846
-
-    run [150]:
-    Style Loss : 0.035685 Content Loss: 0.315440
-
-    run [200]:
-    Style Loss : 0.031963 Content Loss: 0.306338
-
-    run [250]:
-    Style Loss : 0.030848 Content Loss: 0.301760
-
-    run [300]:
-    Style Loss : 0.030419 Content Loss: 0.299445
-
-
-**Total running time of the script:** ( 1 minutes  11.778 seconds)
+**Total running time of the script:** ( 0 minutes  0.000 seconds)
 
 
 

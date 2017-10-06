@@ -58,11 +58,6 @@ argument that is a tensor of matching shape.
     from torch.autograd import Variable
 
 
-
-
-
-
-
 Create a variable:
 
 
@@ -71,19 +66,6 @@ Create a variable:
 
     x = Variable(torch.ones(2, 2), requires_grad=True)
     print(x)
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    Variable containing:
-     1  1
-     1  1
-    [torch.FloatTensor of size 2x2]
 
 
 Do an operation of variable:
@@ -96,19 +78,6 @@ Do an operation of variable:
     print(y)
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    Variable containing:
-     3  3
-     3  3
-    [torch.FloatTensor of size 2x2]
-
-
 ``y`` was created as a result of an operation, so it has a ``grad_fn``.
 
 
@@ -116,16 +85,6 @@ Do an operation of variable:
 .. code-block:: python
 
     print(y.grad_fn)
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    <torch.autograd.function.AddConstantBackward object at 0x2b47f7fdbca8>
 
 
 Do more operations on y
@@ -138,22 +97,6 @@ Do more operations on y
     out = z.mean()
 
     print(z, out)
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    Variable containing:
-     27  27
-     27  27
-    [torch.FloatTensor of size 2x2]
-     Variable containing:
-     27
-    [torch.FloatTensor of size 1]
 
 
 Gradients
@@ -169,11 +112,6 @@ let's backprop now
     out.backward()
 
 
-
-
-
-
-
 print gradients d(out)/dx
 
 
@@ -183,19 +121,6 @@ print gradients d(out)/dx
 
 
     print(x.grad)
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    Variable containing:
-     4.5000  4.5000
-     4.5000  4.5000
-    [torch.FloatTensor of size 2x2]
 
 
 You should have got a matrix of ``4.5``. Let’s call the ``out``
@@ -226,20 +151,6 @@ You can do many crazy things with autograd!
 
 
 
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    Variable containing:
-     -265.3163
-     1134.7809
-      809.5146
-    [torch.FloatTensor of size 3]
-
-
-
 .. code-block:: python
 
     gradients = torch.FloatTensor([0.1, 1.0, 0.0001])
@@ -248,27 +159,13 @@ You can do many crazy things with autograd!
     print(x.grad)
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    Variable containing:
-      204.8000
-     2048.0000
-        0.2048
-    [torch.FloatTensor of size 3]
-
-
 **Read Later:**
 
 Documentation of ``Variable`` and ``Function`` is at
 http://pytorch.org/docs/autograd
 
 
-**Total running time of the script:** ( 0 minutes  0.003 seconds)
+**Total running time of the script:** ( 0 minutes  0.000 seconds)
 
 
 

@@ -1,0 +1,1393 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>SyntaxError &mdash; PyTorch Tutorials 0.2.0_4 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/pytorch_theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PyTorch Tutorials 0.2.0_4 documentation" href="../index.html"/>
+        <link rel="next" title="Neural Transfer with PyTorch" href="../advanced/neural_style_tutorial.html"/>
+        <link rel="prev" title="Reinforcement Learning (DQN) tutorial" href="reinforcement_q_learning.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> PyTorch Tutorials
+          
+
+          
+            
+            <img src="../_static/pytorch-logo-dark.svg" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0_4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Beginner Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../beginner/deep_learning_60min_blitz.html">Deep Learning with PyTorch: A 60 Minute Blitz</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../beginner/blitz/tensor_tutorial.html">What is PyTorch?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/blitz/tensor_tutorial.html#getting-started">Getting Started</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../beginner/blitz/tensor_tutorial.html#tensors">Tensors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../beginner/blitz/tensor_tutorial.html#operations">Operations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/blitz/tensor_tutorial.html#numpy-bridge">Numpy Bridge</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../beginner/blitz/tensor_tutorial.html#converting-torch-tensor-to-numpy-array">Converting torch Tensor to numpy Array</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../beginner/blitz/tensor_tutorial.html#converting-numpy-array-to-torch-tensor">Converting numpy Array to torch Tensor</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/blitz/tensor_tutorial.html#cuda-tensors">CUDA Tensors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../beginner/blitz/autograd_tutorial.html">Autograd: automatic differentiation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/blitz/autograd_tutorial.html#variable">Variable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/blitz/autograd_tutorial.html#gradients">Gradients</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../beginner/blitz/neural_networks_tutorial.html">Neural Networks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/blitz/neural_networks_tutorial.html#define-the-network">Define the network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/blitz/neural_networks_tutorial.html#loss-function">Loss Function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/blitz/neural_networks_tutorial.html#backprop">Backprop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/blitz/neural_networks_tutorial.html#update-the-weights">Update the weights</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../beginner/blitz/cifar10_tutorial.html">Training a classifier</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/blitz/cifar10_tutorial.html#what-about-data">What about data?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/blitz/cifar10_tutorial.html#training-an-image-classifier">Training an image classifier</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../beginner/blitz/cifar10_tutorial.html#loading-and-normalizing-cifar10">1. Loading and normalizing CIFAR10</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../beginner/blitz/cifar10_tutorial.html#define-a-convolution-neural-network">2. Define a Convolution Neural Network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../beginner/blitz/cifar10_tutorial.html#define-a-loss-function-and-optimizer">3. Define a Loss function and optimizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../beginner/blitz/cifar10_tutorial.html#train-the-network">4. Train the network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../beginner/blitz/cifar10_tutorial.html#test-the-network-on-the-test-data">5. Test the network on the test data</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/blitz/cifar10_tutorial.html#training-on-gpu">Training on GPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/blitz/cifar10_tutorial.html#where-do-i-go-next">Where do I go next?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../beginner/former_torchies_tutorial.html">PyTorch for former Torch users</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../beginner/former_torchies/tensor_tutorial.html">Tensors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/former_torchies/tensor_tutorial.html#inplace-out-of-place">Inplace / Out-of-place</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/former_torchies/tensor_tutorial.html#zero-indexing">Zero Indexing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/former_torchies/tensor_tutorial.html#no-camel-casing">No camel casing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/former_torchies/tensor_tutorial.html#numpy-bridge">Numpy Bridge</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../beginner/former_torchies/tensor_tutorial.html#converting-torch-tensor-to-numpy-array">Converting torch Tensor to numpy Array</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../beginner/former_torchies/tensor_tutorial.html#converting-numpy-array-to-torch-tensor">Converting numpy Array to torch Tensor</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/former_torchies/tensor_tutorial.html#cuda-tensors">CUDA Tensors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../beginner/former_torchies/autograd_tutorial.html">Autograd</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/former_torchies/autograd_tutorial.html#variable">Variable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/former_torchies/autograd_tutorial.html#gradients">Gradients</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../beginner/former_torchies/nn_tutorial.html">nn package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/former_torchies/nn_tutorial.html#example-1-convnet">Example 1: ConvNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/former_torchies/nn_tutorial.html#forward-and-backward-function-hooks">Forward and Backward Function Hooks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/former_torchies/nn_tutorial.html#example-2-recurrent-net">Example 2: Recurrent Net</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../beginner/former_torchies/parallelism_tutorial.html">Multi-GPU examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/former_torchies/parallelism_tutorial.html#dataparallel">DataParallel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/former_torchies/parallelism_tutorial.html#part-of-the-model-on-cpu-and-part-on-the-gpu">Part of the model on CPU and part on the GPU</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../beginner/pytorch_with_examples.html">Learning PyTorch with Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../beginner/pytorch_with_examples.html#tensors">Tensors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/pytorch_with_examples.html#warm-up-numpy">Warm-up: numpy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/pytorch_with_examples.html#pytorch-tensors">PyTorch: Tensors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../beginner/pytorch_with_examples.html#autograd">Autograd</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/pytorch_with_examples.html#pytorch-variables-and-autograd">PyTorch: Variables and autograd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/pytorch_with_examples.html#pytorch-defining-new-autograd-functions">PyTorch: Defining new autograd functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/pytorch_with_examples.html#tensorflow-static-graphs">TensorFlow: Static Graphs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../beginner/pytorch_with_examples.html#nn-module"><cite>nn</cite> module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/pytorch_with_examples.html#pytorch-nn">PyTorch: nn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/pytorch_with_examples.html#pytorch-optim">PyTorch: optim</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/pytorch_with_examples.html#pytorch-custom-nn-modules">PyTorch: Custom nn Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/pytorch_with_examples.html#pytorch-control-flow-weight-sharing">PyTorch: Control Flow + Weight Sharing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../beginner/pytorch_with_examples.html#examples">Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/pytorch_with_examples.html#id1">Tensors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../beginner/examples_tensor/two_layer_net_numpy.html">Warm-up: numpy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../beginner/examples_tensor/two_layer_net_tensor.html">PyTorch: Tensors</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/pytorch_with_examples.html#id2">Autograd</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../beginner/examples_autograd/two_layer_net_autograd.html">PyTorch: Variables and autograd</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../beginner/examples_autograd/two_layer_net_custom_function.html">PyTorch: Defining new autograd functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../beginner/examples_autograd/tf_two_layer_net.html">TensorFlow: Static Graphs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/pytorch_with_examples.html#id3"><cite>nn</cite> module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../beginner/examples_nn/two_layer_net_nn.html">PyTorch: nn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../beginner/examples_nn/two_layer_net_optim.html">PyTorch: optim</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../beginner/examples_nn/two_layer_net_module.html">PyTorch: Custom nn Modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../beginner/examples_nn/dynamic_net.html">PyTorch: Control Flow + Weight Sharing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../beginner/transfer_learning_tutorial.html">Transfer Learning tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../beginner/transfer_learning_tutorial.html#load-data">Load Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/transfer_learning_tutorial.html#visualize-a-few-images">Visualize a few images</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../beginner/transfer_learning_tutorial.html#training-the-model">Training the model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/transfer_learning_tutorial.html#visualizing-the-model-predictions">Visualizing the model predictions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../beginner/transfer_learning_tutorial.html#finetuning-the-convnet">Finetuning the convnet</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/transfer_learning_tutorial.html#train-and-evaluate">Train and evaluate</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../beginner/transfer_learning_tutorial.html#convnet-as-fixed-feature-extractor">ConvNet as fixed feature extractor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/transfer_learning_tutorial.html#id1">Train and evaluate</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../beginner/data_loading_tutorial.html">Data Loading and Processing Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../beginner/data_loading_tutorial.html#dataset-class">Dataset class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../beginner/data_loading_tutorial.html#transforms">Transforms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/data_loading_tutorial.html#compose-transforms">Compose transforms</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../beginner/data_loading_tutorial.html#iterating-through-the-dataset">Iterating through the dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../beginner/data_loading_tutorial.html#afterword-torchvision">Afterword: torchvision</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../beginner/deep_learning_nlp_tutorial.html">Deep Learning for NLP with Pytorch</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../beginner/nlp/pytorch_tutorial.html">Introduction to PyTorch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/nlp/pytorch_tutorial.html#introduction-to-torch-s-tensor-library">Introduction to Torch’s tensor library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../beginner/nlp/pytorch_tutorial.html#creating-tensors">Creating Tensors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../beginner/nlp/pytorch_tutorial.html#operations-with-tensors">Operations with Tensors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../beginner/nlp/pytorch_tutorial.html#reshaping-tensors">Reshaping Tensors</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/nlp/pytorch_tutorial.html#computation-graphs-and-automatic-differentiation">Computation Graphs and Automatic Differentiation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../beginner/nlp/deep_learning_tutorial.html">Deep Learning with PyTorch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/nlp/deep_learning_tutorial.html#deep-learning-building-blocks-affine-maps-non-linearities-and-objectives">Deep Learning Building Blocks: Affine maps, non-linearities and objectives</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../beginner/nlp/deep_learning_tutorial.html#affine-maps">Affine Maps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../beginner/nlp/deep_learning_tutorial.html#non-linearities">Non-Linearities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../beginner/nlp/deep_learning_tutorial.html#softmax-and-probabilities">Softmax and Probabilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../beginner/nlp/deep_learning_tutorial.html#objective-functions">Objective Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/nlp/deep_learning_tutorial.html#optimization-and-training">Optimization and Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/nlp/deep_learning_tutorial.html#creating-network-components-in-pytorch">Creating Network Components in Pytorch</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../beginner/nlp/deep_learning_tutorial.html#example-logistic-regression-bag-of-words-classifier">Example: Logistic Regression Bag-of-Words classifier</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../beginner/nlp/word_embeddings_tutorial.html">Word Embeddings: Encoding Lexical Semantics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/nlp/word_embeddings_tutorial.html#getting-dense-word-embeddings">Getting Dense Word Embeddings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/nlp/word_embeddings_tutorial.html#word-embeddings-in-pytorch">Word Embeddings in Pytorch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/nlp/word_embeddings_tutorial.html#an-example-n-gram-language-modeling">An Example: N-Gram Language Modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/nlp/word_embeddings_tutorial.html#exercise-computing-word-embeddings-continuous-bag-of-words">Exercise: Computing Word Embeddings: Continuous Bag-of-Words</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../beginner/nlp/sequence_models_tutorial.html">Sequence Models and Long-Short Term Memory Networks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/nlp/sequence_models_tutorial.html#lstm-s-in-pytorch">LSTM’s in Pytorch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/nlp/sequence_models_tutorial.html#example-an-lstm-for-part-of-speech-tagging">Example: An LSTM for Part-of-Speech Tagging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/nlp/sequence_models_tutorial.html#exercise-augmenting-the-lstm-part-of-speech-tagger-with-character-level-features">Exercise: Augmenting the LSTM part-of-speech tagger with character-level features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../beginner/nlp/advanced_tutorial.html">Advanced: Making Dynamic Decisions and the Bi-LSTM CRF</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/nlp/advanced_tutorial.html#dynamic-versus-static-deep-learning-toolkits">Dynamic versus Static Deep Learning Toolkits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/nlp/advanced_tutorial.html#bi-lstm-conditional-random-field-discussion">Bi-LSTM Conditional Random Field Discussion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/nlp/advanced_tutorial.html#implementation-notes">Implementation Notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/nlp/advanced_tutorial.html#exercise-a-new-loss-function-for-discriminative-tagging">Exercise: A new loss function for discriminative tagging</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Intermediate Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="char_rnn_classification_tutorial.html">Classifying Names with a Character-Level RNN</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="char_rnn_classification_tutorial.html#preparing-the-data">Preparing the Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="char_rnn_classification_tutorial.html#turning-names-into-tensors">Turning Names into Tensors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="char_rnn_classification_tutorial.html#creating-the-network">Creating the Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="char_rnn_classification_tutorial.html#training">Training</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="char_rnn_classification_tutorial.html#preparing-for-training">Preparing for Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="char_rnn_classification_tutorial.html#training-the-network">Training the Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="char_rnn_classification_tutorial.html#plotting-the-results">Plotting the Results</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="char_rnn_classification_tutorial.html#evaluating-the-results">Evaluating the Results</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="char_rnn_classification_tutorial.html#running-on-user-input">Running on User Input</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="char_rnn_classification_tutorial.html#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="char_rnn_generation_tutorial.html">Generating Names with a Character-Level RNN</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="char_rnn_generation_tutorial.html#preparing-the-data">Preparing the Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="char_rnn_generation_tutorial.html#creating-the-network">Creating the Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="char_rnn_generation_tutorial.html#training">Training</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="char_rnn_generation_tutorial.html#preparing-for-training">Preparing for Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="char_rnn_generation_tutorial.html#training-the-network">Training the Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="char_rnn_generation_tutorial.html#plotting-the-losses">Plotting the Losses</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="char_rnn_generation_tutorial.html#sampling-the-network">Sampling the Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="char_rnn_generation_tutorial.html#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="seq2seq_translation_tutorial.html">Translation with a Sequence to Sequence Network and Attention</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="seq2seq_translation_tutorial.html#loading-data-files">Loading data files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="seq2seq_translation_tutorial.html#the-seq2seq-model">The Seq2Seq Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="seq2seq_translation_tutorial.html#the-encoder">The Encoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="seq2seq_translation_tutorial.html#the-decoder">The Decoder</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="seq2seq_translation_tutorial.html#simple-decoder">Simple Decoder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="seq2seq_translation_tutorial.html#attention-decoder">Attention Decoder</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="seq2seq_translation_tutorial.html#training">Training</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="seq2seq_translation_tutorial.html#preparing-training-data">Preparing Training Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="seq2seq_translation_tutorial.html#training-the-model">Training the Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="seq2seq_translation_tutorial.html#plotting-results">Plotting results</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="seq2seq_translation_tutorial.html#evaluation">Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="seq2seq_translation_tutorial.html#training-and-evaluating">Training and Evaluating</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="seq2seq_translation_tutorial.html#visualizing-attention">Visualizing Attention</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="seq2seq_translation_tutorial.html#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reinforcement_q_learning.html">Reinforcement Learning (DQN) tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reinforcement_q_learning.html#replay-memory">Replay Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reinforcement_q_learning.html#dqn-algorithm">DQN algorithm</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reinforcement_q_learning.html#q-network">Q-network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reinforcement_q_learning.html#input-extraction">Input extraction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reinforcement_q_learning.html#training">Training</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reinforcement_q_learning.html#hyperparameters-and-utilities">Hyperparameters and utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reinforcement_q_learning.html#training-loop">Training loop</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SyntaxError</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/neural_style_tutorial.html">Neural Transfer with PyTorch</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/neural_style_tutorial.html#introduction">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../advanced/neural_style_tutorial.html#neural-what">Neural what?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../advanced/neural_style_tutorial.html#how-does-it-work">How does it work?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../advanced/neural_style_tutorial.html#ok-how-does-it-work">OK. How does it work?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/neural_style_tutorial.html#pytorch-implementation">PyTorch implementation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../advanced/neural_style_tutorial.html#packages">Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../advanced/neural_style_tutorial.html#cuda">Cuda</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../advanced/neural_style_tutorial.html#load-images">Load images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../advanced/neural_style_tutorial.html#display-images">Display images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../advanced/neural_style_tutorial.html#content-loss">Content loss</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../advanced/neural_style_tutorial.html#style-loss">Style loss</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../advanced/neural_style_tutorial.html#load-the-neural-network">Load the neural network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../advanced/neural_style_tutorial.html#input-image">Input image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../advanced/neural_style_tutorial.html#gradient-descent">Gradient descent</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/numpy_extensions_tutorial.html">Creating extensions using numpy and scipy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/numpy_extensions_tutorial.html#parameter-less-example">Parameter-less example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/numpy_extensions_tutorial.html#parametrized-example">Parametrized example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/super_resolution_with_caffe2.html">Transfering a model from PyTorch to Caffe2 and Mobile using ONNX</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/super_resolution_with_caffe2.html#transfering-srresnet-using-onnx">Transfering SRResNet using ONNX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/super_resolution_with_caffe2.html#running-the-model-on-mobile-devices">Running the model on mobile devices</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/c_extension.html">Custom C extensions for pytorch</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/c_extension.html#step-1-prepare-your-c-code">Step 1. prepare your C code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/c_extension.html#step-2-include-it-in-your-python-code">Step 2: Include it in your Python code</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PyTorch Tutorials</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>SyntaxError</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/intermediate/distributed_tutorial.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="syntaxerror">
+<span id="sphx-glr-intermediate-distributed-tutorial-py"></span><h1>SyntaxError<a class="headerlink" href="#syntaxerror" title="Permalink to this headline">¶</a></h1>
+<p>Example script with invalid Python syntax</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;&quot;</span>
+<span class="sd">Writing Distributed Applications with PyTorch</span>
+<span class="sd">**********************************************</span>
+<span class="sd">**Author**: `Seb Arnold &lt;https://seba1511.com&gt;`_</span>
+
+<span class="sd">Introduction</span>
+<span class="sd">============</span>
+
+<span class="sd">In this short tutorial, we will be going over the distributed package of</span>
+<span class="sd">PyTorch. We&#39;ll see how to set up the distributed setting, use the</span>
+<span class="sd">different communication strategies, and go over some the internals of</span>
+<span class="sd">the package.</span>
+
+<span class="sd">Setup</span>
+<span class="sd">=====</span>
+
+<span class="sd">.. raw:: html</span>
+
+<span class="sd">   &lt;!--</span>
+<span class="sd">   * Processes &amp; machines</span>
+<span class="sd">   * variables and init_process_group</span>
+<span class="sd">   --&gt;</span>
+
+<span class="sd">The distributed package included ting Distributed Applications with</span>
+<span class="sd">PyTorch in PyTorch (i.e., ``torch.distributed``) enables researchers and</span>
+<span class="sd">practitioners to easily parallelize their computations across processes</span>
+<span class="sd">and clusters of machines. To do so, it leverages the messaging passing</span>
+<span class="sd">semantics allowing each process to communicate data to any of the other</span>
+<span class="sd">processes. As opposed to the multiprocessing (``torch.multiprocessing``)</span>
+<span class="sd">package, processes can use different communication backends and are not</span>
+<span class="sd">restricted to being executed on the same machine.</span>
+
+<span class="sd">In order to get started we need the ability to run multiple processes</span>
+<span class="sd">simultaneously. If you have access to compute cluster you should check</span>
+<span class="sd">with your local sysadmin or use your favorite coordination tool. (e.g.,</span>
+<span class="sd">`pdsh &lt;https://linux.die.net/man/1/pdsh&gt;`__,</span>
+<span class="sd">`clustershell &lt;http://cea-hpc.github.io/clustershell/&gt;`__, or</span>
+<span class="sd">`others &lt;https://slurm.schedmd.com/&gt;`__) For the purpose of this</span>
+<span class="sd">tutorial, we will use a single machine and fork multiple processes using</span>
+<span class="sd">the following template.</span>
+
+<span class="sd">.. code:: python</span>
+
+<span class="sd">    &quot;&quot;&quot;</span><span class="n">run</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    #!/usr/bin/env python</span>
+<span class="s2">    import os</span>
+<span class="s2">    import torch</span>
+<span class="s2">    import torch.distributed as dist</span>
+<span class="s2">    from torch.multiprocessing import Process</span>
+
+<span class="s2">    def run(rank, size):</span>
+<span class="s2">        &quot;&quot;&quot;</span> <span class="n">Distributed</span> <span class="n">function</span> <span class="n">to</span> <span class="n">be</span> <span class="n">implemented</span> <span class="n">later</span><span class="o">.</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        pass</span>
+
+<span class="s2">    def init_processes(rank, size, fn, backend=&#39;tcp&#39;):</span>
+<span class="s2">        &quot;&quot;&quot;</span> <span class="n">Initialize</span> <span class="n">the</span> <span class="n">distributed</span> <span class="n">environment</span><span class="o">.</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        os.environ[&#39;MASTER_ADDR&#39;] = &#39;127.0.0.1&#39;</span>
+<span class="s2">        os.environ[&#39;MASTER_PORT&#39;] = &#39;29500&#39;</span>
+<span class="s2">        dist.init_process_group(backend, rank=rank, world_size=size)</span>
+<span class="s2">        fn(rank, size)</span>
+
+
+<span class="s2">    if __name__ == &quot;__main__&quot;:</span>
+<span class="s2">        size = 2</span>
+<span class="s2">        processes = []</span>
+<span class="s2">        for rank in range(size):</span>
+<span class="s2">            p = Process(target=init_processes, args=(rank, size, run))</span>
+<span class="s2">            p.start()</span>
+<span class="s2">            processes.append(p)</span>
+
+<span class="s2">        for p in processes:</span>
+<span class="s2">            p.join()</span>
+
+<span class="s2">The above script spawns two processes who will each setup the</span>
+<span class="s2">distributed environment, initialize the process group</span>
+<span class="s2">(``dist.init_process_group``), and finally execute the given ``run``</span>
+<span class="s2">function.</span>
+
+<span class="s2">Let&#39;s have a look at the ``init_processes`` function. It ensures that</span>
+<span class="s2">every process will be able to coordinate through a master, using the</span>
+<span class="s2">same ip address and port. Note that we used the TCP backend, but we</span>
+<span class="s2">could have used</span>
+<span class="s2">`MPI &lt;https://en.wikipedia.org/wiki/Message_Passing_Interface&gt;`__ or</span>
+<span class="s2">`Gloo &lt;http://github.com/facebookincubator/gloo&gt;`__ instead. (c.f.</span>
+<span class="s2">`Section 5.1 &lt;#communication-backends&gt;`__) We will go over the magic</span>
+<span class="s2">happening in ``dist.init_process_group`` at the end of this tutorial,</span>
+<span class="s2">but it essentially allows processes to communicate with each other by</span>
+<span class="s2">sharing their locations.</span>
+
+<span class="s2">Point-to-Point Communication</span>
+<span class="s2">============================</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;!--</span>
+<span class="s2">   * send/recv</span>
+<span class="s2">   * isend/irecv</span>
+<span class="s2">   --&gt;</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;table&gt;</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;tbody&gt;</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;tr&gt;</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;/tr&gt;</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;tr&gt;</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;td align=&quot;center&quot;&gt;</span>
+
+<span class="s2"> Send and Recv</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;/td&gt;</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;/tr&gt;</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;/tbody&gt;</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;/table&gt;</span>
+
+<span class="s2">A transfer of data from one process to another is called a</span>
+<span class="s2">point-to-point communication. These are achieved through the ``send``</span>
+<span class="s2">and ``recv`` functions or their *immediate* counter-parts, ``isend`` and</span>
+<span class="s2">``irecv``.</span>
+
+<span class="s2">.. code:: python</span>
+
+<span class="s2">    &quot;&quot;&quot;</span><span class="n">Blocking</span> <span class="n">point</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">point</span> <span class="n">communication</span><span class="o">.</span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">    def run(rank, size):</span>
+<span class="s2">        tensor = torch.zeros(1)</span>
+<span class="s2">        if rank == 0:</span>
+<span class="s2">            tensor += 1</span>
+<span class="s2">            # Send the tensor to process 1</span>
+<span class="s2">            dist.send(tensor=tensor, dst=1)</span>
+<span class="s2">        else:</span>
+<span class="s2">            # Receive tensor from process 0</span>
+<span class="s2">            dist.recv(tensor=tensor, src=0)</span>
+<span class="s2">        print(&#39;Rank &#39;, rank, &#39; has data &#39;, tensor[0])</span>
+
+<span class="s2">In the above example, both processes start with a zero tensor, then</span>
+<span class="s2">process 0 increments the tensor and sends it to process 1 so that they</span>
+<span class="s2">both end up with 1.0. Notice that process 1 needs to allocate memory in</span>
+<span class="s2">order to store the data it will receive.</span>
+
+<span class="s2">Also notice that ``send``/``recv`` are **blocking**: both processes stop</span>
+<span class="s2">until the communication is completed. On the other hand immediates are</span>
+<span class="s2">**non-blocking**; the script continues its execution and the methods</span>
+<span class="s2">return a ``DistributedRequest`` object upon which we can choose to</span>
+<span class="s2">``wait()``.</span>
+
+<span class="s2">.. code:: python</span>
+
+<span class="s2">    &quot;&quot;&quot;</span><span class="n">Non</span><span class="o">-</span><span class="n">blocking</span> <span class="n">point</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">point</span> <span class="n">communication</span><span class="o">.</span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">    def run(rank, size):</span>
+<span class="s2">        tensor = torch.zeros(1)</span>
+<span class="s2">        req = None</span>
+<span class="s2">        if rank == 0:</span>
+<span class="s2">            tensor += 1</span>
+<span class="s2">            # Send the tensor to process 1</span>
+<span class="s2">            req = dist.isend(tensor=tensor, dst=1)</span>
+<span class="s2">            print(&#39;Rank 0 started sending&#39;)</span>
+<span class="s2">        else:</span>
+<span class="s2">            # Receive tensor from process 0</span>
+<span class="s2">            req = dist.irecv(tensor=tensor, src=0)</span>
+<span class="s2">            print(&#39;Rank 1 started receiving&#39;)</span>
+<span class="s2">            print(&#39;Rank 1 has data &#39;, tensor[0])</span>
+<span class="s2">        req.wait()</span>
+<span class="s2">        print(&#39;Rank &#39;, rank, &#39; has data &#39;, tensor[0])</span>
+
+<span class="s2">Running the above function might result in process 1 still having 0.0</span>
+<span class="s2">while having already started receiving. However, after ``req.wait()``</span>
+<span class="s2">has been executed we are guaranteed that the communication took place,</span>
+<span class="s2">and that the value stored in ``tensor[0]`` is 1.0.</span>
+
+<span class="s2">Point-to-point communication is useful when we want a fine-grained</span>
+<span class="s2">control over the communication of our processes. They can be used to</span>
+<span class="s2">implement fancy algorithms, such as the one used in `Baidu&#39;s</span>
+<span class="s2">DeepSpeech &lt;https://github.com/baidu-research/baidu-allreduce&gt;`__ or</span>
+<span class="s2">`Facebook&#39;s large-scale</span>
+<span class="s2">experiments &lt;https://research.fb.com/publications/imagenet1kin1h/&gt;`__.(c.f.</span>
+<span class="s2">`Section 4.1 &lt;#our-own-ring-allreduce&gt;`__)</span>
+
+<span class="s2">Collective Communication</span>
+<span class="s2">========================</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;!--</span>
+<span class="s2">   * gather</span>
+<span class="s2">   * reduce</span>
+<span class="s2">   * broadcast</span>
+<span class="s2">   * scatter</span>
+<span class="s2">   * all_reduce</span>
+<span class="s2">   --&gt;</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;table&gt;</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;tbody&gt;</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;tr&gt;</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;td align=&quot;center&quot;&gt;</span>
+
+<span class="s2"> Broadcast</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;/td&gt;</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;td align=&quot;center&quot;&gt;</span>
+
+<span class="s2"> AllGather</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;/td&gt;</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;/tr&gt;</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;tr&gt;</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;td align=&quot;center&quot;&gt;</span>
+
+<span class="s2"> Reduce</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;/td&gt;</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;td align=&quot;center&quot;&gt;</span>
+
+<span class="s2"> AllReduce</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;/td&gt;</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;/tr&gt;</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;tr&gt;</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;td align=&quot;center&quot;&gt;</span>
+
+<span class="s2"> Scatter</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;/td&gt;</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;td align=&quot;center&quot;&gt;</span>
+
+<span class="s2"> Gather</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;/td&gt;</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;/tr&gt;</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;/tbody&gt;</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;/table&gt;</span>
+
+<span class="s2">As opposed to point-to-point communcation, collectives allow for</span>
+<span class="s2">communication patterns across all processes in a **group**. A group is a</span>
+<span class="s2">subset of all our processes. To create a group, we can pass a list of</span>
+<span class="s2">ranks to ``dist.new_group(group)``. By default, collectives are executed</span>
+<span class="s2">on the all processes, also known as the **world**. For example, in order</span>
+<span class="s2">to obtain the sum of all tensors at all processes, we can use the</span>
+<span class="s2">``dist.all_reduce(tensor, op, group)`` collective.</span>
+
+<span class="s2">.. code:: python</span>
+
+<span class="s2">    &quot;&quot;&quot;</span> <span class="n">All</span><span class="o">-</span><span class="n">Reduce</span> <span class="n">example</span><span class="o">.</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    def run(rank, size):</span>
+<span class="s2">        &quot;&quot;&quot;</span> <span class="n">Simple</span> <span class="n">point</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">point</span> <span class="n">communication</span><span class="o">.</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        group = dist.new_group([0, 1])</span>
+<span class="s2">        tensor = torch.ones(1)</span>
+<span class="s2">        dist.all_reduce(tensor, op=dist.reduce_op.SUM, group=group)</span>
+<span class="s2">        print(&#39;Rank &#39;, rank, &#39; has data &#39;, tensor[0])</span>
+
+<span class="s2">Since we want the sum of all tensors in the group, we use</span>
+<span class="s2">``dist.reduce_op.SUM`` as the reduce operator. Generally speaking, any</span>
+<span class="s2">commutative mathematical operation can be used as an operator.</span>
+<span class="s2">Out-of-the-box, PyTorch comes with 4 such operators, all working at the</span>
+<span class="s2">element-wise level:</span>
+
+<span class="s2">-  ``dist.reduce_op.SUM``,</span>
+<span class="s2">-  ``dist.reduce_op.PRODUCT``,</span>
+<span class="s2">-  ``dist.reduce_op.MAX``,</span>
+<span class="s2">-  ``dist.reduce_op.MIN``.</span>
+
+<span class="s2">In addition to ``dist.all_reduce(tensor, op, group)``, there are a total</span>
+<span class="s2">of 6 collectives currently implemented in PyTorch.</span>
+
+<span class="s2">-  ``dist.broadcast(tensor, src, group)``: Copies ``tensor`` from</span>
+<span class="s2">   ``src`` to all other processes.</span>
+<span class="s2">-  ``dist.reduce(tensor, dst, op, group)``: Applies ``op`` to all</span>
+<span class="s2">   ``tensor`` and stores the result in ``dst``.</span>
+<span class="s2">-  ``dist.all_reduce(tensor, op, group)``: Same as reduce, but the</span>
+<span class="s2">   result is stored in all processes.</span>
+<span class="s2">-  ``dist.scatter(tensor, src, scatter_list, group)``: Copies the</span>
+<span class="s2">   :math:`i^{</span><span class="se">\t</span><span class="s2">ext{th}}` tensor ``scatter_list[i]`` to the</span>
+<span class="s2">   :math:`i^{</span><span class="se">\t</span><span class="s2">ext{th}}` process.</span>
+<span class="s2">-  ``dist.gather(tensor, dst, gather_list, group)``: Copies ``tensor``</span>
+<span class="s2">   from all processes in ``dst``.</span>
+<span class="s2">-  ``dist.all_gather(tensor_list, tensor, group)``: Copies ``tensor``</span>
+<span class="s2">   from all processes to ``tensor_list``, on all processes.</span>
+
+<span class="s2">Distributed Training</span>
+<span class="s2">====================</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;!--</span>
+<span class="s2">   * Gloo Backend</span>
+<span class="s2">   * Simple all_reduce on the gradients</span>
+<span class="s2">   * Point to optimized DistributedDataParallel</span>
+
+<span class="s2">   TODO: Custom ring-allreduce</span>
+<span class="s2">   --&gt;</span>
+
+<span class="s2">**Note:** You can find the example script of this section in `this</span>
+<span class="s2">GitHub repository &lt;https://github.com/seba-1511/dist_tuto.pth/&gt;`__.</span>
+
+<span class="s2">Now that we understand how the distributed module works, let us write</span>
+<span class="s2">something useful with it. Our goal will be to replicate the</span>
+<span class="s2">functionality of</span>
+<span class="s2">`DistributedDataParallel &lt;http://pytorch.org/docs/master/nn.html#torch.nn.parallel.DistributedDataParallel&gt;`__.</span>
+<span class="s2">Of course, this will be a didactic example and in a real-world</span>
+<span class="s2">situtation you should use the official, well-tested and well-optimized</span>
+<span class="s2">version linked above.</span>
+
+<span class="s2">Quite simply we want to implement a distributed version of stochastic</span>
+<span class="s2">gradient descent. Our script will let all processes compute the</span>
+<span class="s2">gradients of their model on their batch of data and then average their</span>
+<span class="s2">gradients. In order to ensure similar convergence results when changing</span>
+<span class="s2">the number of processes, we will first have to partition our dataset.</span>
+<span class="s2">(You could also use</span>
+<span class="s2">`tnt.dataset.SplitDataset &lt;https://github.com/pytorch/tnt/blob/master/torchnet/dataset/splitdataset.py#L4&gt;`__,</span>
+<span class="s2">instead of the snippet below.)</span>
+
+<span class="s2">.. code:: python</span>
+
+<span class="s2">    &quot;&quot;&quot;</span> <span class="n">Dataset</span> <span class="n">partitioning</span> <span class="n">helper</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    class Partition(object):</span>
+
+<span class="s2">        def __init__(self, data, index):</span>
+<span class="s2">            self.data = data</span>
+<span class="s2">            self.index = index</span>
+
+<span class="s2">        def __len__(self):</span>
+<span class="s2">            return len(self.index)</span>
+
+<span class="s2">        def __getitem__(self, index):</span>
+<span class="s2">            data_idx = self.index[index]</span>
+<span class="s2">            return self.data[data_idx]</span>
+
+
+<span class="s2">    class DataPartitioner(object):</span>
+
+<span class="s2">        def __init__(self, data, sizes=[0.7, 0.2, 0.1], seed=1234):</span>
+<span class="s2">            self.data = data</span>
+<span class="s2">            self.partitions = []</span>
+<span class="s2">            rng = Random()</span>
+<span class="s2">            rng.seed(seed)</span>
+<span class="s2">            data_len = len(data)</span>
+<span class="s2">            indexes = [x for x in range(0, data_len)]</span>
+<span class="s2">            rng.shuffle(indexes)</span>
+
+<span class="s2">            for frac in sizes:</span>
+<span class="s2">                part_len = int(frac * data_len)</span>
+<span class="s2">                self.partitions.append(indexes[0:part_len])</span>
+<span class="s2">                indexes = indexes[part_len:]</span>
+
+<span class="s2">        def use(self, partition):</span>
+<span class="s2">            return Partition(self.data, self.partitions[partition])</span>
+
+<span class="s2">With the above snippet, we can now simply partition any dataset using</span>
+<span class="s2">the following few lines:</span>
+
+<span class="s2">.. code:: python</span>
+
+<span class="s2">    &quot;&quot;&quot;</span> <span class="n">Partitioning</span> <span class="n">MNIST</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    def partition_dataset():</span>
+<span class="s2">        dataset = datasets.MNIST(&#39;./data&#39;, train=True, download=True,</span>
+<span class="s2">                                 transform=transforms.Compose([</span>
+<span class="s2">                                     transforms.ToTensor(),</span>
+<span class="s2">                                     transforms.Normalize((0.1307,), (0.3081,))</span>
+<span class="s2">                                 ]))</span>
+<span class="s2">        size = dist.get_world_size()</span>
+<span class="s2">        bsz = 128 / float(size)</span>
+<span class="s2">        partition_sizes = [1.0 / size for _ in range(size)]</span>
+<span class="s2">        partition = DataPartitioner(dataset, partition_sizes)</span>
+<span class="s2">        partition = partition.use(dist.get_rank())</span>
+<span class="s2">        train_set = torch.utils.data.DataLoader(partition,</span>
+<span class="s2">                                             batch_size=bsz,</span>
+<span class="s2">                                             shuffle=True)</span>
+<span class="s2">        return train_set, bsz</span>
+
+<span class="s2">Assuming we have 2 replicas, then each process will have a ``train_set``</span>
+<span class="s2">of 60000 / 2 = 30000 samples. We also divide the batch size by the</span>
+<span class="s2">number of replicas in order to maintain the *overall* batch size of 128.</span>
+
+<span class="s2">We can now write our usual forward-backward-optimize training code, and</span>
+<span class="s2">add a function call to average the gradients of our models. (The</span>
+<span class="s2">following is largely inspired from the official `PyTorch MNIST</span>
+<span class="s2">example &lt;https://github.com/pytorch/examples/blob/master/mnist/main.py&gt;`__.)</span>
+
+<span class="s2">.. code:: python</span>
+
+<span class="s2">    &quot;&quot;&quot;</span> <span class="n">Distributed</span> <span class="n">Synchronous</span> <span class="n">SGD</span> <span class="n">Example</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    def run(rank, size):</span>
+<span class="s2">            torch.manual_seed(1234)</span>
+<span class="s2">            train_set, bsz = partition_dataset()</span>
+<span class="s2">            model = Net()</span>
+<span class="s2">            optimizer = optim.SGD(model.parameters(),</span>
+<span class="s2">                                  lr=0.01, momentum=0.5)</span>
+
+<span class="s2">            num_batches = ceil(len(train_set.dataset) / float(bsz))</span>
+<span class="s2">            for epoch in range(10):</span>
+<span class="s2">                epoch_loss = 0.0</span>
+<span class="s2">                for data, target in train_set:</span>
+<span class="s2">                    data, target = Variable(data), Variable(target)</span>
+<span class="s2">                    optimizer.zero_grad()</span>
+<span class="s2">                    output = model(data)</span>
+<span class="s2">                    loss = F.nll_loss(output, target)</span>
+<span class="s2">                    epoch_loss += loss.data[0]</span>
+<span class="s2">                    loss.backward()</span>
+<span class="s2">                    average_gradients(model)</span>
+<span class="s2">                    optimizer.step()</span>
+<span class="s2">                print(&#39;Rank &#39;, dist.get_rank(), &#39;, epoch &#39;,</span>
+<span class="s2">                      epoch, &#39;: &#39;, epoch_loss / num_batches)</span>
+
+<span class="s2">It remains to implement the ``average_gradients(model)`` function, which</span>
+<span class="s2">simply takes in a model and averages its gradients across the whole</span>
+<span class="s2">world.</span>
+
+<span class="s2">.. code:: python</span>
+
+<span class="s2">    &quot;&quot;&quot;</span> <span class="n">Gradient</span> <span class="n">averaging</span><span class="o">.</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    def average_gradients(model):</span>
+<span class="s2">        size = float(dist.get_world_size())</span>
+<span class="s2">        for param in model.parameters():</span>
+<span class="s2">            dist.all_reduce(param.grad.data, op=dist.reduce_op.SUM)</span>
+<span class="s2">            param.grad.data /= size</span>
+
+<span class="s2">*Et voilà *! We successfully implemented distributed synchronous SGD and</span>
+<span class="s2">could train any model on a large computer cluster.</span>
+
+<span class="s2">**Note:** While the last sentence is *technically* true, there are `a</span>
+<span class="s2">lot more tricks &lt;http://seba-1511.github.io/dist_blog&gt;`__ required to</span>
+<span class="s2">implement a production-level implementation of synchronous SGD. Again,</span>
+<span class="s2">use what `has been tested and</span>
+<span class="s2">optimized &lt;http://pytorch.org/docs/master/nn.html#torch.nn.parallel.DistributedDataParallel&gt;`__.</span>
+
+<span class="s2">Our Own Ring-Allreduce</span>
+<span class="s2">----------------------</span>
+
+<span class="s2">As an additional challenge, imagine that we wanted to implement</span>
+<span class="s2">DeepSpeech&#39;s efficient ring allreduce. This is fairly easily implemented</span>
+<span class="s2">using point-to-point collectives.</span>
+
+<span class="s2">.. code:: python</span>
+
+<span class="s2">    &quot;&quot;&quot;</span> <span class="n">Implementation</span> <span class="n">of</span> <span class="n">a</span> <span class="n">ring</span><span class="o">-</span><span class="nb">reduce</span> <span class="k">with</span> <span class="n">addition</span><span class="o">.</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    def allreduce(send, recv):</span>
+<span class="s2">        rank = dist.get_rank()</span>
+<span class="s2">        size = dist.get_world_size()</span>
+<span class="s2">        send_buff = th.zeros(send.size())</span>
+<span class="s2">        recv_buff = th.zeros(send.size())</span>
+<span class="s2">        accum = th.zeros(send.size())</span>
+<span class="s2">        accum[:] = send[:]</span>
+
+<span class="s2">        left = ((rank - 1) + size) </span><span class="si">% s</span><span class="s2">ize</span>
+<span class="s2">        right = (rank + 1) </span><span class="si">% s</span><span class="s2">ize</span>
+
+<span class="s2">        for i in range(size - 1):</span>
+<span class="s2">            if i % 2 == 0:</span>
+<span class="s2">                # Send send_buff</span>
+<span class="s2">                send_req = dist.isend(send_buff, right)</span>
+<span class="s2">                dist.recv(recv_buff, left)</span>
+<span class="s2">                accum[:] += recv[:]</span>
+<span class="s2">            else:</span>
+<span class="s2">                # Send recv_buff</span>
+<span class="s2">                send_req = dist.isend(recv_buff, right)</span>
+<span class="s2">                dist.recv(send_buff, left)</span>
+<span class="s2">                accum[:] += send[:]</span>
+<span class="s2">            send_req.wait()</span>
+<span class="s2">        recv[:] = accum[:]</span>
+
+<span class="s2">In the above script, the ``allreduce(send, recv)`` function has a</span>
+<span class="s2">slightly different signature than the ones in PyTorch. It takes a</span>
+<span class="s2">``recv`` tensor and will store the sum of all ``send`` tensors in it. As</span>
+<span class="s2">an exercise left to the reader, there is still one difference between</span>
+<span class="s2">our version and the one in DeepSpeech: their implementation divide the</span>
+<span class="s2">gradient tensor into *chunks*, so as to optimially utilize the</span>
+<span class="s2">communication bandwidth. (Hint:</span>
+<span class="s2">`toch.chunk &lt;http://pytorch.org/docs/master/torch.html#torch.chunk&gt;`__)</span>
+
+<span class="s2">Advanced Topics</span>
+<span class="s2">===============</span>
+
+<span class="s2">We are now ready to discover some of the more advanced functionalities</span>
+<span class="s2">of ``torch.distributed``. Since there is a lot to cover, this section is</span>
+<span class="s2">divided into two subsections:</span>
+
+<span class="s2">1. Communication Backends: where we learn how to use MPI and Gloo for</span>
+<span class="s2">   GPU-GPU communication.</span>
+<span class="s2">2. Initialization Methods: where we understand how to best setup the</span>
+<span class="s2">   initial coordination phase in ``dist.init_process_group()``.</span>
+
+<span class="s2">Communication Backends</span>
+<span class="s2">----------------------</span>
+
+<span class="s2">One of the most elegant aspects of ``torch.distributed`` is its ability</span>
+<span class="s2">to abstract and build on top of different backends. As mentioned before,</span>
+<span class="s2">there are currently three backends implemented in PyTorch: TCP, MPI, and</span>
+<span class="s2">Gloo. They each have different specifications and tradeoffs, depending</span>
+<span class="s2">on the desired use-case. A comparative table of supported functions can</span>
+<span class="s2">be found</span>
+<span class="s2">`here &lt;http://pytorch.org/docs/master/distributed.html#module-torch.distributed&gt;`__.</span>
+
+<span class="s2">TCP Backend</span>
+<span class="s2">~~~~~~~~~~~</span>
+
+<span class="s2">So far we have made extensive usage of the TCP backend. It is quite</span>
+<span class="s2">handy as a development platform, as it is guaranteed to work on most</span>
+<span class="s2">machines and operating systems. It also supports all point-to-point and</span>
+<span class="s2">collective functions on CPU. However, there is no support for GPUs and</span>
+<span class="s2">its communication routines are not as optimized as the MPI one.</span>
+
+<span class="s2">Gloo Backend</span>
+<span class="s2">~~~~~~~~~~~~</span>
+
+<span class="s2">The `Gloo backend &lt;https://github.com/facebookincubator/gloo&gt;`__</span>
+<span class="s2">provides an optimized implementation of *collective* communication</span>
+<span class="s2">procedures, both for CPUs and GPUs. It particularly shines on GPUs as it</span>
+<span class="s2">can perform communication without transferring data to the CPU&#39;s memory</span>
+<span class="s2">using `GPUDirect &lt;https://developer.nvidia.com/gpudirect&gt;`__. It is also</span>
+<span class="s2">capable of using `NCCL &lt;https://github.com/NVIDIA/nccl&gt;`__ to perform</span>
+<span class="s2">fast intra-node communication and implements its `own</span>
+<span class="s2">algorithms &lt;https://github.com/facebookincubator/gloo/blob/master/docs/algorithms.md&gt;`__</span>
+<span class="s2">for inter-node routines.</span>
+
+<span class="s2">Since version 0.2.0, the Gloo backend is automatically included with the</span>
+<span class="s2">pre-compiled binaries of PyTorch. As you have surely noticed, our</span>
+<span class="s2">distributed SGD example does not work if you put ``model`` on the GPU.</span>
+<span class="s2">Let&#39;s fix it by first replacing ``backend=&#39;gloo&#39;`` in</span>
+<span class="s2">``init_processes(rank, size, fn, backend=&#39;tcp&#39;)``. At this point, the</span>
+<span class="s2">script will still run on CPU but uses the Gloo backend behind the</span>
+<span class="s2">scenes. In order to use multiple GPUs, let us also do the following</span>
+<span class="s2">modifications:</span>
+
+<span class="s2">0. ``init_processes(rank, size, fn, backend=&#39;tcp&#39;)`` :math:`</span><span class="se">\r</span><span class="s2">ightarrow`</span>
+<span class="s2">   ``init_processes(rank, size, fn, backend=&#39;gloo&#39;)``</span>
+<span class="s2">1. ``model = Net()`` :math:`</span><span class="se">\r</span><span class="s2">ightarrow` ``model = Net().cuda(rank)``</span>
+<span class="s2">2. ``data, target = Variable(data), Variable(target)``</span>
+<span class="s2">   :math:`</span><span class="se">\r</span><span class="s2">ightarrow`</span>
+<span class="s2">   ``data, target = Variable(data.cuda(rank)), Variable(target.cuda(rank))``</span>
+
+<span class="s2">With the above modifications, our model is now training on two GPUs and</span>
+<span class="s2">you can monitor their utilization with ``watch nvidia-smi``.</span>
+
+<span class="s2">MPI Backend</span>
+<span class="s2">~~~~~~~~~~~</span>
+
+<span class="s2">The Message Passing Interface (MPI) is a standardized tool from the</span>
+<span class="s2">field of high-performance computing. It allows to do point-to-point and</span>
+<span class="s2">collective communications and was the main inspiration for the API of</span>
+<span class="s2">``torch.distributed``. Several implementations of MPI exist (e.g.</span>
+<span class="s2">`Open-MPI &lt;https://www.open-mpi.org/&gt;`__,</span>
+<span class="s2">`MVAPICH2 &lt;http://mvapich.cse.ohio-state.edu/&gt;`__, `Intel</span>
+<span class="s2">MPI &lt;https://software.intel.com/en-us/intel-mpi-library&gt;`__) each</span>
+<span class="s2">optimized for different purposes. The advantage of using the MPI backend</span>
+<span class="s2">lies in MPI&#39;s wide availability - and high-level of optimization - on</span>
+<span class="s2">large computer clusters. `Some &lt;https://developer.nvidia.com/mvapich&gt;`__</span>
+<span class="s2">`recent &lt;https://developer.nvidia.com/ibm-spectrum-mpi&gt;`__</span>
+<span class="s2">`implementations &lt;http://www.open-mpi.org/&gt;`__ are also able to take</span>
+<span class="s2">advantage of CUDA IPC and GPU Direct technologies in order to avoid</span>
+<span class="s2">memory copies through the CPU.</span>
+
+<span class="s2">Unfortunately, PyTorch&#39;s binaries can not include an MPI implementation</span>
+<span class="s2">and we&#39;ll have to recompile it by hand. Fortunately, this process is</span>
+<span class="s2">fairly simple given that upon compilation, PyTorch will look *by itself*</span>
+<span class="s2">for an available MPI implementation. The following steps install the MPI</span>
+<span class="s2">backend, by installing PyTorch `from</span>
+<span class="s2">sources &lt;https://github.com/pytorch/pytorch#from-source&gt;`__.</span>
+
+<span class="s2">1. Create and activate your Anaconda environment, install all the</span>
+<span class="s2">   pre-requisites following `the</span>
+<span class="s2">   guide &lt;https://github.com/pytorch/pytorch#from-source&gt;`__, but do</span>
+<span class="s2">   **not** run ``python setup.py install`` yet.</span>
+<span class="s2">2. Choose and install your favorite MPI implementation. Note that</span>
+<span class="s2">   enabling CUDA-aware MPI might require some additional steps. In our</span>
+<span class="s2">   case, we&#39;ll stick to Open-MPI *without* GPU support:</span>
+<span class="s2">   ``conda install -c conda-forge openmpi``</span>
+<span class="s2">3. Now, go to your cloned PyTorch repo and execute</span>
+<span class="s2">   ``python setup.py install``.</span>
+
+<span class="s2">In order to test our newly installed backend, a few modifications are</span>
+<span class="s2">required.</span>
+
+<span class="s2">1. Replace the content under ``if __name__ == &#39;__main__&#39;:`` with</span>
+<span class="s2">   ``init_processes(0, 0, run, backend=&#39;mpi&#39;)``.</span>
+<span class="s2">2. Run ``mpirun -n 4 python myscript.py``.</span>
+
+<span class="s2">The reason for these changes is that MPI needs to create its own</span>
+<span class="s2">environment before spawning the processes. MPI will also spawn its own</span>
+<span class="s2">processes and perform the handshake described in `Initialization</span>
+<span class="s2">Methods &lt;#initialization-methods&gt;`__, making the ``rank``\ and ``size``</span>
+<span class="s2">arguments of ``init_process_group`` superfluous. This is actually quite</span>
+<span class="s2">powerful as you can pass additional arguments to ``mpirun`` in order to</span>
+<span class="s2">tailor computational resources for each process. (Things like number of</span>
+<span class="s2">cores per process, hand-assigning machines to specific ranks, and `some</span>
+<span class="s2">more &lt;https://www.open-mpi.org/faq/?category=running#mpirun-hostfile&gt;`__)</span>
+<span class="s2">Doing so, you should obtain the same familiar output as with the other</span>
+<span class="s2">communication backends.</span>
+
+<span class="s2">Initialization Methods</span>
+<span class="s2">----------------------</span>
+
+<span class="s2">To finish this tutorial, let&#39;s talk about the very first function we</span>
+<span class="s2">called: ``dist.init_process_group(backend, init_method)``. In</span>
+<span class="s2">particular, we will go over the different initialization methods which</span>
+<span class="s2">are responsible for the initial coordination step between each process.</span>
+<span class="s2">Those methods allow you to define how this coordination is done.</span>
+<span class="s2">Depending on your hardware setup, one of these methods should be</span>
+<span class="s2">naturally more suitable than the others. In addition to the following</span>
+<span class="s2">sections, you should also have a look at the `official</span>
+<span class="s2">documentation &lt;http://pytorch.org/docs/master/distributed.html#initialization&gt;`__.</span>
+
+<span class="s2">Before diving into the initialization methods, let&#39;s have a quick look</span>
+<span class="s2">at what happens behind ``init_process_group`` from the C/C++</span>
+<span class="s2">perspective.</span>
+
+<span class="s2">1. First, the arguments are parsed and validated.</span>
+<span class="s2">2. The backend is resolved via the ``name2channel.at()`` function. A</span>
+<span class="s2">   ``Channel`` class is returned, and will be used to perform the data</span>
+<span class="s2">   transmission.</span>
+<span class="s2">3. The GIL is dropped, and ``THDProcessGroupInit()`` is called. This</span>
+<span class="s2">   instantiates the channel and adds the address of the master node.</span>
+<span class="s2">4. The process with rank 0 will execute the ``master`` procedure, while</span>
+<span class="s2">   all other ranks will be ``workers``.</span>
+<span class="s2">5. The master</span>
+
+<span class="s2">   a. Creates sockets for all workers.</span>
+<span class="s2">   b. Waits for all workers to connect.</span>
+<span class="s2">   c. Sends them information about the location of the other processes.</span>
+
+<span class="s2">6. Each worker</span>
+
+<span class="s2">   a. Creates a socket to the master.</span>
+<span class="s2">   b. Sends their own location information.</span>
+<span class="s2">   c. Receives information about the other workers.</span>
+<span class="s2">   d. Opens a socket and handshakes with all other workers.</span>
+
+<span class="s2">7. The initialization is done, and everyone is connected to everyone.</span>
+
+<span class="s2">Environment Variable</span>
+<span class="s2">~~~~~~~~~~~~~~~~~~~~</span>
+
+<span class="s2">We have been using the environment variable initialization method</span>
+<span class="s2">throughout this tutorial. By setting the following four environment</span>
+<span class="s2">variables on all machines, all processes will be able to properly</span>
+<span class="s2">connect to the master, obtain information about the other processes, and</span>
+<span class="s2">finally handshake with them.</span>
+
+<span class="s2">-  ``MASTER_PORT``: A free port on the machine that will host the</span>
+<span class="s2">   process with rank 0.</span>
+<span class="s2">-  ``MASTER_ADDR``: IP address of the machine that will host the process</span>
+<span class="s2">   with rank 0.</span>
+<span class="s2">-  ``WORLD_SIZE``: The total number of processes, so that the master</span>
+<span class="s2">   knows how many workers to wait for.</span>
+<span class="s2">-  ``RANK``: Rank of each process, so they will know whether it is the</span>
+<span class="s2">   master of a worker.</span>
+
+<span class="s2">Shared File System</span>
+<span class="s2">~~~~~~~~~~~~~~~~~~</span>
+
+<span class="s2">The shared filesystem requires all processes to have access to a shared</span>
+<span class="s2">file system, and will coordinate them through a shared file. This means</span>
+<span class="s2">that each process will open the file, write its information, and wait</span>
+<span class="s2">until everybody did so. After what all required information will be</span>
+<span class="s2">readily available to all processes. In order to avoid race conditions,</span>
+<span class="s2">the file system must support locking through</span>
+<span class="s2">`fcntl &lt;http://man7.org/linux/man-pages/man2/fcntl.2.html&gt;`__. Note that</span>
+<span class="s2">you can specify ranks manually or let the processes figure it out by</span>
+<span class="s2">themselves. Be defining a unique ``groupname`` per job you can use the</span>
+<span class="s2">same file path for multiple jobs and safely avoid collision.</span>
+
+<span class="s2">.. code:: python</span>
+
+<span class="s2">    dist.init_process_group(init_method=&#39;file:///mnt/nfs/sharedfile&#39;, world_size=4,</span>
+<span class="s2">                            group_name=&#39;mygroup&#39;)</span>
+
+<span class="s2">TCP Init &amp; Multicast</span>
+<span class="s2">~~~~~~~~~~~~~~~~~~~~</span>
+
+<span class="s2">Initializing via TCP can be achieved in two different ways:</span>
+
+<span class="s2">1. By providing the IP address of the process with rank 0 and the world</span>
+<span class="s2">   size.</span>
+<span class="s2">2. By providing *any* valid IP `multicast</span>
+<span class="s2">   address &lt;https://en.wikipedia.org/wiki/Multicast_address&gt;`__ and the</span>
+<span class="s2">   world size.</span>
+
+<span class="s2">In the first case, all workers will be able to connect to the process</span>
+<span class="s2">with rank 0 and follow the procedure described above.</span>
+
+<span class="s2">.. code:: python</span>
+
+<span class="s2">    dist.init_process_group(init_method=&#39;tcp://10.1.1.20:23456&#39;, rank=args.rank, world_size=4)</span>
+
+<span class="s2">In the second case, the multicast address specifies the group of nodes</span>
+<span class="s2">who might potentially be active and the coordination can be handled by</span>
+<span class="s2">allowing each process to have an initial handshake before following the</span>
+<span class="s2">above procedure. In addition TCP multicast initialization also supports</span>
+<span class="s2">a ``group_name`` argument (as with the shared file method) allowing</span>
+<span class="s2">multiple jobs to be scheduled on the same cluster.</span>
+
+<span class="s2">.. code:: python</span>
+
+<span class="s2">    dist.init_process_group(init_method=&#39;tcp://[ff15:1e18:5d4c:4cf0:d02d:b659:53ba:b0a7]:23456&#39;,</span>
+<span class="s2">                            world_size=4)</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;!--</span>
+<span class="s2">   ## Internals</span>
+<span class="s2">   * The magic behind init_process_group:</span>
+
+<span class="s2">   1. validate and parse the arguments</span>
+<span class="s2">   2. resolve the backend: name2channel.at()</span>
+<span class="s2">   3. Drop GIL &amp; THDProcessGroupInit: instantiate the channel and add address of master from config</span>
+<span class="s2">   4. rank 0 inits master, others workers</span>
+<span class="s2">   5. master: create sockets for all workers -&gt; wait for all workers to connect -&gt; send them each the info about location of other processes</span>
+<span class="s2">   6. worker: create socket to master, send own info, receive info about each worker, and then handshake with each of them</span>
+<span class="s2">   7. By this time everyone has handshake with everyone.</span>
+<span class="s2">   --&gt;</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;center&gt;</span>
+
+<span class="s2">**Acknowledgements**</span>
+
+<span class="s2">.. raw:: html</span>
+
+<span class="s2">   &lt;/center&gt;</span>
+
+<span class="s2">I&#39;d like to thank the PyTorch developers for doing such a good job on</span>
+<span class="s2">their implementation, documentation, and tests. When the code was</span>
+<span class="s2">unclear, I could always count on the</span>
+<span class="s2">`docs &lt;http://pytorch.org/docs/master/distributed.html&gt;`__ or the</span>
+<span class="s2">`tests &lt;https://github.com/pytorch/pytorch/blob/master/test/test_distributed.py&gt;`__</span>
+<span class="s2">to find an answer. In particular, I&#39;d like to thank Soumith Chintala,</span>
+<span class="s2">Adam Paszke, and Natalia Gimelshein for providing insightful comments</span>
+<span class="s2">and answering questions on early drafts.</span>
+
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.000 seconds)</p>
+<div class="sphx-glr-footer docutils container">
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../_downloads/distributed_tutorial.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">distributed_tutorial.py</span></code></a></div>
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../_downloads/distributed_tutorial.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">distributed_tutorial.ipynb</span></code></a></div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../advanced/neural_style_tutorial.html" class="btn btn-neutral float-right" title="Neural Transfer with PyTorch" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="reinforcement_q_learning.html" class="btn btn-neutral" title="Reinforcement Learning (DQN) tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, PyTorch.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2.0_4',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-90545585-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</body>
+</html>

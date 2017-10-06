@@ -86,22 +86,6 @@ Let’s define this network:
     print(net)
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    Net (
-      (conv1): Conv2d(1, 6, kernel_size=(5, 5), stride=(1, 1))
-      (conv2): Conv2d(6, 16, kernel_size=(5, 5), stride=(1, 1))
-      (fc1): Linear (400 -> 120)
-      (fc2): Linear (120 -> 84)
-      (fc3): Linear (84 -> 10)
-    )
-
-
 You just have to define the ``forward`` function, and the ``backward``
 function (where gradients are computed) is automatically defined for you
 using ``autograd``.
@@ -119,17 +103,6 @@ The learnable parameters of a model are returned by ``net.parameters()``
     print(params[0].size())  # conv1's .weight
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    10
-    torch.Size([6, 1, 5, 5])
-
-
 The input to the forward is an ``autograd.Variable``, and so is the output.
 
 
@@ -142,18 +115,6 @@ The input to the forward is an ``autograd.Variable``, and so is the output.
     print(out)
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    Variable containing:
-    -0.0431  0.1465  0.0130 -0.0784 -0.0989 -0.0063  0.1443 -0.0105  0.1308  0.0281
-    [torch.FloatTensor of size 1x10]
-
-
 Zero the gradient buffers of all parameters and backprops with random
 gradients:
 
@@ -163,11 +124,6 @@ gradients:
 
     net.zero_grad()
     out.backward(torch.randn(1, 10))
-
-
-
-
-
 
 
 .. note::
@@ -199,7 +155,7 @@ Before proceeding further, let's recap all the classes you’ve seen so far.
   -  ``autograd.Function`` - Implements *forward and backward definitions
      of an autograd operation*. Every ``Variable`` operation, creates at
      least a single ``Function`` node, that connects to functions that
-     created a ``Variable`` and *encodes its history**.
+     created a ``Variable`` and *encodes its history*.
 
 **At this point, we covered:**
   -  Defining a neural network
@@ -235,18 +191,6 @@ For example:
     print(loss)
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    Variable containing:
-     38.1423
-    [torch.FloatTensor of size 1]
-
-
 Now, if you follow ``loss`` in the backward direction, using it’s
 ``.grad_fn`` attribute, you will see a graph of computations that looks
 like this:
@@ -274,18 +218,6 @@ For illustration, let us follow a few steps backward:
     print(loss.grad_fn.next_functions[0][0].next_functions[0][0])  # ReLU
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    <torch.autograd.function.MSELossBackward object at 0x2b47f956d468>
-    <torch.autograd.function.AddmmBackward object at 0x2b47f956d360>
-    <AccumulateGrad object at 0x2b47f90634a8>
-
-
 Backprop
 --------
 To backpropogate the error all we have to do is to ``loss.backward()``.
@@ -311,34 +243,6 @@ gradients before and after the backward.
 
     print('conv1.bias.grad after backward')
     print(net.conv1.bias.grad)
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    conv1.bias.grad before backward
-    Variable containing:
-     0
-     0
-     0
-     0
-     0
-     0
-    [torch.FloatTensor of size 6]
-
-    conv1.bias.grad after backward
-    Variable containing:
-    -0.0390
-     0.1407
-     0.0613
-    -0.1214
-    -0.0129
-    -0.0582
-    [torch.FloatTensor of size 6]
 
 
 Now, we have seen how to use loss functions.
@@ -390,12 +294,7 @@ implements all these methods. Using it is very simple:
     loss.backward()
     optimizer.step()    # Does the update
 
-
-
-
-
-
-**Total running time of the script:** ( 0 minutes  0.029 seconds)
+**Total running time of the script:** ( 0 minutes  0.000 seconds)
 
 
 

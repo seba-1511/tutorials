@@ -30,11 +30,6 @@ lets look what we can do with tensors.
 
 
 
-
-
-
-
-
 Creating Tensors
 ~~~~~~~~~~~~~~~~
 
@@ -65,34 +60,6 @@ function.
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    1
-     2
-     3
-    [torch.FloatTensor of size 3]
-
-
-     1  2  3
-     4  5  6
-    [torch.FloatTensor of size 2x3]
-
-
-    (0 ,.,.) = 
-      1  2
-      3  4
-
-    (1 ,.,.) = 
-      5  6
-      7  8
-    [torch.FloatTensor of size 2x2x2]
-
-
 What is a 3D tensor anyway? Think about it like this. If you have a
 vector, indexing into the vector gives you a scalar. If you have a
 matrix, indexing into the matrix gives you a vector. If you have a 3D
@@ -121,26 +88,6 @@ talking about 3D tensors, I will explicitly use the term "3D tensor".
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    1.0
-
-     1
-     2
-     3
-    [torch.FloatTensor of size 3]
-
-
-     1  2
-     3  4
-    [torch.FloatTensor of size 2x2]
-
-
 You can also create tensors of other datatypes. The default, as you can
 see, is Float. To create a tensor of integer types, try
 torch.LongTensor(). Check the documentation for more data types, but
@@ -162,33 +109,6 @@ with torch.randn()
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    (0 ,.,.) = 
-     -2.9718  1.7070 -0.4305 -2.2820  0.5237
-      0.0004 -1.2039  3.5283  0.4434  0.5848
-      0.8407  0.5510  0.3863  0.9124 -0.8410
-      1.2282 -1.8661  1.4146 -1.8781 -0.4674
-
-    (1 ,.,.) = 
-     -0.7576  0.4215 -0.4827 -1.1198  0.3056
-      1.0386  0.5206 -0.5006  1.2182  0.2117
-     -1.0613 -1.9441 -0.9596  0.5489 -0.9901
-     -0.3826  1.5037  1.8267  0.5561  1.6445
-
-    (2 ,.,.) = 
-      0.4973 -1.5067  1.7661 -0.3569 -0.1713
-      0.4068 -0.4284 -1.1299  1.4274 -1.4027
-      1.4825 -1.1559  1.6190  0.9581  0.7747
-      0.1940  0.1687  0.3061  1.0743 -1.0327
-    [torch.FloatTensor of size 3x4x5]
-
-
 Operations with Tensors
 ~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -204,19 +124,6 @@ You can operate on tensors in the ways you would expect.
     z = x + y
     print(z)
 
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    5
-     7
-     9
-    [torch.FloatTensor of size 3]
 
 
 See `the documentation <http://pytorch.org/docs/torch.html>`__ for a
@@ -249,26 +156,6 @@ One helpful operation that we will make use of later is concatenation.
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    1.0930  0.7769 -1.3128  0.7099  0.9944
-    -0.2694 -0.6491 -0.1373 -0.2954 -0.7725
-    -0.2215  0.5074 -0.6794 -1.6115  0.5230
-    -0.8890  0.2620  0.0302  0.0013 -1.3987
-     1.4666 -0.1028 -0.0097 -0.8420 -0.2067
-    [torch.FloatTensor of size 5x5]
-
-
-     1.0672  0.1732 -0.6873  0.3620  0.3776 -0.2443 -0.5850  2.0812
-     0.3111  0.2358 -1.0658 -0.1186  0.4903  0.8349  0.8894  0.4148
-    [torch.FloatTensor of size 2x8]
-
-
 Reshaping Tensors
 ~~~~~~~~~~~~~~~~~
 
@@ -289,47 +176,6 @@ to the component.
     # Same as above.  If one of the dimensions is -1, its size can be inferred
     print(x.view(2, -1))
 
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    (0 ,.,.) = 
-      0.0507 -0.9644 -2.0111  0.5245
-      2.1332 -0.0822  0.8388 -1.3233
-      0.0701  1.2200  0.4251 -1.2328
-
-    (1 ,.,.) = 
-     -0.6195  1.5133  1.9954 -0.6585
-     -0.4139 -0.2250 -0.6890  0.9882
-      0.7404 -2.0990  1.2582 -0.3990
-    [torch.FloatTensor of size 2x3x4]
-
-
-
-    Columns 0 to 9 
-     0.0507 -0.9644 -2.0111  0.5245  2.1332 -0.0822  0.8388 -1.3233  0.0701  1.2200
-    -0.6195  1.5133  1.9954 -0.6585 -0.4139 -0.2250 -0.6890  0.9882  0.7404 -2.0990
-
-    Columns 10 to 11 
-     0.4251 -1.2328
-     1.2582 -0.3990
-    [torch.FloatTensor of size 2x12]
-
-
-
-    Columns 0 to 9 
-     0.0507 -0.9644 -2.0111  0.5245  2.1332 -0.0822  0.8388 -1.3233  0.0701  1.2200
-    -0.6195  1.5133  1.9954 -0.6585 -0.4139 -0.2250 -0.6890  0.9882  0.7404 -2.0990
-
-    Columns 10 to 11 
-     0.4251 -1.2328
-     1.2582 -0.3990
-    [torch.FloatTensor of size 2x12]
 
 
 Computation Graphs and Automatic Differentiation
@@ -376,27 +222,6 @@ action.
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    1
-     2
-     3
-    [torch.FloatTensor of size 3]
-
-
-     5
-     7
-     9
-    [torch.FloatTensor of size 3]
-
-    <torch.autograd.function.AddBackward object at 0x2b47f89e6570>
-
-
 So Variables know what created them. z knows that it wasn't read in from
 a file, it wasn't the result of a multiplication or exponential or
 whatever. And if you keep following z.grad_fn, you will find yourself at
@@ -415,20 +240,6 @@ But how does that help us compute a gradient?
     print(s)
     print(s.grad_fn)
 
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    Variable containing:
-     21
-    [torch.FloatTensor of size 1]
-
-    <torch.autograd.function.SumBackward object at 0x2b47f89e6888>
 
 
 So now, what is the derivative of this sum with respect to the first
@@ -475,20 +286,6 @@ property, since for many models this is very convenient.)
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    Variable containing:
-     1
-     1
-     1
-    [torch.FloatTensor of size 3]
-
-
 Understanding what is going on in the block below is crucial for being a
 successful programmer in deep learning.
 
@@ -524,17 +321,6 @@ successful programmer in deep learning.
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    <torch.autograd.function.AddBackward object at 0x2b47f89e6780>
-    None
-
-
 Here is the basic, extremely important rule for computing with
 autograd.Variables (note this is more general than Pytorch. There is an
 equivalent object in every major deep learning toolkit):
@@ -550,7 +336,7 @@ your code to crash or complain, so you must be careful.
 
 
 
-**Total running time of the script:** ( 0 minutes  0.005 seconds)
+**Total running time of the script:** ( 0 minutes  0.000 seconds)
 
 
 

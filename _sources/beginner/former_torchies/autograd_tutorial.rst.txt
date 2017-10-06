@@ -50,34 +50,9 @@ argument that is a tensor of matching shape.
 
 
 
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    Variable containing:
-     1  1
-     1  1
-    [torch.FloatTensor of size 2x2]
-
-
-
 .. code-block:: python
 
     print(x.data)
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    1  1
-     1  1
-    [torch.FloatTensor of size 2x2]
 
 
 
@@ -87,30 +62,10 @@ argument that is a tensor of matching shape.
 
 
 
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    None
-
-
-
 .. code-block:: python
 
 
     print(x.grad_fn)  # we've created x ourselves
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    None
 
 
 Do an operation of x:
@@ -124,19 +79,6 @@ Do an operation of x:
     print(y)
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    Variable containing:
-     3  3
-     3  3
-    [torch.FloatTensor of size 2x2]
-
-
 y was created as a result of an operation,
 so it has a grad_fn
 
@@ -145,16 +87,6 @@ so it has a grad_fn
 .. code-block:: python
 
     print(y.grad_fn)
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    <torch.autograd.function.AddConstantBackward object at 0x2b47f956d360>
 
 
 More operations on y:
@@ -170,22 +102,6 @@ More operations on y:
     print(z, out)
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    Variable containing:
-     27  27
-     27  27
-    [torch.FloatTensor of size 2x2]
-     Variable containing:
-     27
-    [torch.FloatTensor of size 1]
-
-
 Gradients
 ---------
 
@@ -199,19 +115,6 @@ let's backprop now and print gradients d(out)/dx
     out.backward()
     print(x.grad)
 
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    Variable containing:
-     4.5000  4.5000
-     4.5000  4.5000
-    [torch.FloatTensor of size 2x2]
 
 
 By default, gradient computation flushes all the internal buffers
@@ -232,36 +135,10 @@ during the first pass.
 
 
 
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    Variable containing:
-     1  1
-     1  1
-    [torch.FloatTensor of size 2x2]
-
-
-
 .. code-block:: python
 
     z = y * y
     print(z)
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    Variable containing:
-     9  9
-     9  9
-    [torch.FloatTensor of size 2x2]
 
 
 just backprop random gradients
@@ -279,20 +156,7 @@ just backprop random gradients
 
     print(x.grad)
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    Variable containing:
-     1.9225  1.4606
-     1.8982  0.6674
-    [torch.FloatTensor of size 2x2]
-
-
-**Total running time of the script:** ( 0 minutes  0.003 seconds)
+**Total running time of the script:** ( 0 minutes  0.000 seconds)
 
 
 

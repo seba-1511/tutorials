@@ -249,7 +249,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../deep_learning_nlp_tutorial.html">Deep Learning for NLP with Pytorch</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../nlp/pytorch_tutorial.html">Introduction to PyTorch</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../nlp/pytorch_tutorial.html#introduction-to-torch-s-tensor-library">Introduction to Torch&#8217;s tensor library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../nlp/pytorch_tutorial.html#introduction-to-torch-s-tensor-library">Introduction to Torch’s tensor library</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../nlp/pytorch_tutorial.html#creating-tensors">Creating Tensors</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../nlp/pytorch_tutorial.html#operations-with-tensors">Operations with Tensors</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../nlp/pytorch_tutorial.html#reshaping-tensors">Reshaping Tensors</a></li>
@@ -281,7 +281,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../nlp/sequence_models_tutorial.html">Sequence Models and Long-Short Term Memory Networks</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../nlp/sequence_models_tutorial.html#lstm-s-in-pytorch">LSTM&#8217;s in Pytorch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../nlp/sequence_models_tutorial.html#lstm-s-in-pytorch">LSTM’s in Pytorch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../nlp/sequence_models_tutorial.html#example-an-lstm-for-part-of-speech-tagging">Example: An LSTM for Part-of-Speech Tagging</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../nlp/sequence_models_tutorial.html#exercise-augmenting-the-lstm-part-of-speech-tagger-with-character-level-features">Exercise: Augmenting the LSTM part-of-speech tagger with character-level features</a></li>
 </ul>
@@ -365,6 +365,21 @@
 <li class="toctree-l2"><a class="reference internal" href="../../intermediate/reinforcement_q_learning.html#training">Training</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../intermediate/reinforcement_q_learning.html#hyperparameters-and-utilities">Hyperparameters and utilities</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../intermediate/reinforcement_q_learning.html#training-loop">Training loop</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../intermediate/dist_tuto.html">Writing Distributed Applications with PyTorch</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../intermediate/dist_tuto.html#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intermediate/dist_tuto.html#point-to-point-communication">Point-to-Point Communication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intermediate/dist_tuto.html#collective-communication">Collective Communication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intermediate/dist_tuto.html#distributed-training">Distributed Training</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intermediate/dist_tuto.html#our-own-ring-allreduce">Our Own Ring-Allreduce</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../intermediate/dist_tuto.html#advanced-topics">Advanced Topics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intermediate/dist_tuto.html#communication-backends">Communication Backends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../intermediate/dist_tuto.html#initialization-methods">Initialization Methods</a></li>
 </ul>
 </li>
 </ul>
@@ -518,31 +533,13 @@ argument that is a tensor of matching shape.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Variable</span> <span class="n">containing</span><span class="p">:</span>
- <span class="mi">1</span>  <span class="mi">1</span>
- <span class="mi">1</span>  <span class="mi">1</span>
-<span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
-</pre></div>
-</div>
 <p>Do an operation of variable:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">2</span>
 <span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Variable</span> <span class="n">containing</span><span class="p">:</span>
- <span class="mi">3</span>  <span class="mi">3</span>
- <span class="mi">3</span>  <span class="mi">3</span>
-<span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
-</pre></div>
-</div>
 <p><code class="docutils literal"><span class="pre">y</span></code> was created as a result of an operation, so it has a <code class="docutils literal"><span class="pre">grad_fn</span></code>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">grad_fn</span><span class="p">)</span>
-</pre></div>
-</div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">torch</span><span class="o">.</span><span class="n">autograd</span><span class="o">.</span><span class="n">function</span><span class="o">.</span><span class="n">AddConstantBackward</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x2b47f7fdbca8</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>Do more operations on y</p>
@@ -552,33 +549,16 @@ argument that is a tensor of matching shape.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Variable</span> <span class="n">containing</span><span class="p">:</span>
- <span class="mi">27</span>  <span class="mi">27</span>
- <span class="mi">27</span>  <span class="mi">27</span>
-<span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
- <span class="n">Variable</span> <span class="n">containing</span><span class="p">:</span>
- <span class="mi">27</span>
-<span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">1</span><span class="p">]</span>
-</pre></div>
-</div>
 </div>
 <div class="section" id="gradients">
 <h2>Gradients<a class="headerlink" href="#gradients" title="Permalink to this headline">¶</a></h2>
-<p>let&#8217;s backprop now
+<p>let’s backprop now
 <code class="docutils literal"><span class="pre">out.backward()</span></code> is equivalent to doing <code class="docutils literal"><span class="pre">out.backward(torch.Tensor([1.0]))</span></code></p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">out</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>print gradients d(out)/dx</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">grad</span><span class="p">)</span>
-</pre></div>
-</div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Variable</span> <span class="n">containing</span><span class="p">:</span>
- <span class="mf">4.5000</span>  <span class="mf">4.5000</span>
- <span class="mf">4.5000</span>  <span class="mf">4.5000</span>
-<span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>You should have got a matrix of <code class="docutils literal"><span class="pre">4.5</span></code>. Let’s call the <code class="docutils literal"><span class="pre">out</span></code>
@@ -599,32 +579,16 @@ Therefore,
 <span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Variable</span> <span class="n">containing</span><span class="p">:</span>
- <span class="o">-</span><span class="mf">265.3163</span>
- <span class="mf">1134.7809</span>
-  <span class="mf">809.5146</span>
-<span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">3</span><span class="p">]</span>
-</pre></div>
-</div>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">gradients</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">])</span>
 <span class="n">y</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">gradients</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">grad</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Variable</span> <span class="n">containing</span><span class="p">:</span>
-  <span class="mf">204.8000</span>
- <span class="mf">2048.0000</span>
-    <span class="mf">0.2048</span>
-<span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">3</span><span class="p">]</span>
-</pre></div>
-</div>
 <p><strong>Read Later:</strong></p>
 <p>Documentation of <code class="docutils literal"><span class="pre">Variable</span></code> and <code class="docutils literal"><span class="pre">Function</span></code> is at
 <a class="reference external" href="http://pytorch.org/docs/autograd">http://pytorch.org/docs/autograd</a></p>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.003 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.000 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/autograd_tutorial.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">autograd_tutorial.py</span></code></a></div>
@@ -689,7 +653,7 @@ Therefore,
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

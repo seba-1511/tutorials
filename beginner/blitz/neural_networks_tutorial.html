@@ -249,7 +249,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../deep_learning_nlp_tutorial.html">Deep Learning for NLP with Pytorch</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../nlp/pytorch_tutorial.html">Introduction to PyTorch</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../nlp/pytorch_tutorial.html#introduction-to-torch-s-tensor-library">Introduction to Torch&#8217;s tensor library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../nlp/pytorch_tutorial.html#introduction-to-torch-s-tensor-library">Introduction to Torch’s tensor library</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../nlp/pytorch_tutorial.html#creating-tensors">Creating Tensors</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../nlp/pytorch_tutorial.html#operations-with-tensors">Operations with Tensors</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../nlp/pytorch_tutorial.html#reshaping-tensors">Reshaping Tensors</a></li>
@@ -281,7 +281,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../nlp/sequence_models_tutorial.html">Sequence Models and Long-Short Term Memory Networks</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../nlp/sequence_models_tutorial.html#lstm-s-in-pytorch">LSTM&#8217;s in Pytorch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../nlp/sequence_models_tutorial.html#lstm-s-in-pytorch">LSTM’s in Pytorch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../nlp/sequence_models_tutorial.html#example-an-lstm-for-part-of-speech-tagging">Example: An LSTM for Part-of-Speech Tagging</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../nlp/sequence_models_tutorial.html#exercise-augmenting-the-lstm-part-of-speech-tagger-with-character-level-features">Exercise: Augmenting the LSTM part-of-speech tagger with character-level features</a></li>
 </ul>
@@ -365,6 +365,21 @@
 <li class="toctree-l2"><a class="reference internal" href="../../intermediate/reinforcement_q_learning.html#training">Training</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../intermediate/reinforcement_q_learning.html#hyperparameters-and-utilities">Hyperparameters and utilities</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../intermediate/reinforcement_q_learning.html#training-loop">Training loop</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../intermediate/dist_tuto.html">Writing Distributed Applications with PyTorch</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../intermediate/dist_tuto.html#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intermediate/dist_tuto.html#point-to-point-communication">Point-to-Point Communication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intermediate/dist_tuto.html#collective-communication">Collective Communication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intermediate/dist_tuto.html#distributed-training">Distributed Training</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intermediate/dist_tuto.html#our-own-ring-allreduce">Our Own Ring-Allreduce</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../intermediate/dist_tuto.html#advanced-topics">Advanced Topics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intermediate/dist_tuto.html#communication-backends">Communication Backends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../intermediate/dist_tuto.html#initialization-methods">Initialization Methods</a></li>
 </ul>
 </li>
 </ul>
@@ -546,16 +561,6 @@ weights)</li>
 <span class="k">print</span><span class="p">(</span><span class="n">net</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Net</span> <span class="p">(</span>
-  <span class="p">(</span><span class="n">conv1</span><span class="p">):</span> <span class="n">Conv2d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-  <span class="p">(</span><span class="n">conv2</span><span class="p">):</span> <span class="n">Conv2d</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-  <span class="p">(</span><span class="n">fc1</span><span class="p">):</span> <span class="n">Linear</span> <span class="p">(</span><span class="mi">400</span> <span class="o">-&gt;</span> <span class="mi">120</span><span class="p">)</span>
-  <span class="p">(</span><span class="n">fc2</span><span class="p">):</span> <span class="n">Linear</span> <span class="p">(</span><span class="mi">120</span> <span class="o">-&gt;</span> <span class="mi">84</span><span class="p">)</span>
-  <span class="p">(</span><span class="n">fc3</span><span class="p">):</span> <span class="n">Linear</span> <span class="p">(</span><span class="mi">84</span> <span class="o">-&gt;</span> <span class="mi">10</span><span class="p">)</span>
-<span class="p">)</span>
-</pre></div>
-</div>
 <p>You just have to define the <code class="docutils literal"><span class="pre">forward</span></code> function, and the <code class="docutils literal"><span class="pre">backward</span></code>
 function (where gradients are computed) is automatically defined for you
 using <code class="docutils literal"><span class="pre">autograd</span></code>.
@@ -566,21 +571,10 @@ You can use any of the Tensor operations in the <code class="docutils literal"><
 <span class="k">print</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>  <span class="c1"># conv1&#39;s .weight</span>
 </pre></div>
 </div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="mi">10</span>
-<span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
-</pre></div>
-</div>
 <p>The input to the forward is an <code class="docutils literal"><span class="pre">autograd.Variable</span></code>, and so is the output.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="nb">input</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">))</span>
 <span class="n">out</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
-</pre></div>
-</div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Variable</span> <span class="n">containing</span><span class="p">:</span>
-<span class="o">-</span><span class="mf">0.0431</span>  <span class="mf">0.1465</span>  <span class="mf">0.0130</span> <span class="o">-</span><span class="mf">0.0784</span> <span class="o">-</span><span class="mf">0.0989</span> <span class="o">-</span><span class="mf">0.0063</span>  <span class="mf">0.1443</span> <span class="o">-</span><span class="mf">0.0105</span>  <span class="mf">0.1308</span>  <span class="mf">0.0281</span>
-<span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">1</span><span class="n">x10</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Zero the gradient buffers of all parameters and backprops with random
@@ -599,7 +593,7 @@ a single sample.</p>
 <p class="last">If you have a single sample, just use <code class="docutils literal"><span class="pre">input.unsqueeze(0)</span></code> to add
 a fake batch dimension.</p>
 </div>
-<p>Before proceeding further, let&#8217;s recap all the classes you’ve seen so far.</p>
+<p>Before proceeding further, let’s recap all the classes you’ve seen so far.</p>
 <dl class="docutils">
 <dt><strong>Recap:</strong></dt>
 <dd><ul class="first last simple">
@@ -617,7 +611,7 @@ registered as a parameter when assigned as an attribute to a</em>
 <li><code class="docutils literal"><span class="pre">autograd.Function</span></code> - Implements <em>forward and backward definitions
 of an autograd operation</em>. Every <code class="docutils literal"><span class="pre">Variable</span></code> operation, creates at
 least a single <code class="docutils literal"><span class="pre">Function</span></code> node, that connects to functions that
-created a <code class="docutils literal"><span class="pre">Variable</span></code> and <em>encodes its history*</em>.</li>
+created a <code class="docutils literal"><span class="pre">Variable</span></code> and <em>encodes its history</em>.</li>
 </ul>
 </dd>
 <dt><strong>At this point, we covered:</strong></dt>
@@ -652,12 +646,6 @@ between the input and the target.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Variable</span> <span class="n">containing</span><span class="p">:</span>
- <span class="mf">38.1423</span>
-<span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">1</span><span class="p">]</span>
-</pre></div>
-</div>
 <p>Now, if you follow <code class="docutils literal"><span class="pre">loss</span></code> in the backward direction, using it’s
 <code class="docutils literal"><span class="pre">.grad_fn</span></code> attribute, you will see a graph of computations that looks
 like this:</p>
@@ -676,19 +664,13 @@ w.r.t. the loss, and all Variables in the graph will have their
 <span class="k">print</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">grad_fn</span><span class="o">.</span><span class="n">next_functions</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">next_functions</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># ReLU</span>
 </pre></div>
 </div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">torch</span><span class="o">.</span><span class="n">autograd</span><span class="o">.</span><span class="n">function</span><span class="o">.</span><span class="n">MSELossBackward</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x2b47f956d468</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">torch</span><span class="o">.</span><span class="n">autograd</span><span class="o">.</span><span class="n">function</span><span class="o">.</span><span class="n">AddmmBackward</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x2b47f956d360</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">AccumulateGrad</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x2b47f90634a8</span><span class="o">&gt;</span>
-</pre></div>
-</div>
 </div>
 <div class="section" id="backprop">
 <h2>Backprop<a class="headerlink" href="#backprop" title="Permalink to this headline">¶</a></h2>
 <p>To backpropogate the error all we have to do is to <code class="docutils literal"><span class="pre">loss.backward()</span></code>.
 You need to clear the existing gradients though, else gradients will be
 accumulated to existing gradients</p>
-<p>Now we shall call <code class="docutils literal"><span class="pre">loss.backward()</span></code>, and have a look at conv1&#8217;s bias
+<p>Now we shall call <code class="docutils literal"><span class="pre">loss.backward()</span></code>, and have a look at conv1’s bias
 gradients before and after the backward.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>     <span class="c1"># zeroes the gradient buffers of all parameters</span>
 
@@ -699,28 +681,6 @@ gradients before and after the backward.</p>
 
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;conv1.bias.grad after backward&#39;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">conv1</span><span class="o">.</span><span class="n">bias</span><span class="o">.</span><span class="n">grad</span><span class="p">)</span>
-</pre></div>
-</div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">conv1</span><span class="o">.</span><span class="n">bias</span><span class="o">.</span><span class="n">grad</span> <span class="n">before</span> <span class="n">backward</span>
-<span class="n">Variable</span> <span class="n">containing</span><span class="p">:</span>
- <span class="mi">0</span>
- <span class="mi">0</span>
- <span class="mi">0</span>
- <span class="mi">0</span>
- <span class="mi">0</span>
- <span class="mi">0</span>
-<span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">6</span><span class="p">]</span>
-
-<span class="n">conv1</span><span class="o">.</span><span class="n">bias</span><span class="o">.</span><span class="n">grad</span> <span class="n">after</span> <span class="n">backward</span>
-<span class="n">Variable</span> <span class="n">containing</span><span class="p">:</span>
-<span class="o">-</span><span class="mf">0.0390</span>
- <span class="mf">0.1407</span>
- <span class="mf">0.0613</span>
-<span class="o">-</span><span class="mf">0.1214</span>
-<span class="o">-</span><span class="mf">0.0129</span>
-<span class="o">-</span><span class="mf">0.0582</span>
-<span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">6</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Now, we have seen how to use loss functions.</p>
@@ -765,7 +725,7 @@ implements all these methods. Using it is very simple:</p>
 <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>    <span class="c1"># Does the update</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.029 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.000 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/neural_networks_tutorial.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">neural_networks_tutorial.py</span></code></a></div>
@@ -830,7 +790,7 @@ implements all these methods. Using it is very simple:</p>
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

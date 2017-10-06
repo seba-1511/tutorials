@@ -21,11 +21,6 @@ Create a tensor of size (5 x 7) with uninitialized memory:
     a = torch.FloatTensor(5, 7)
 
 
-
-
-
-
-
 Initialize a tensor randomized with a normal distribution with mean=0, var=1:
 
 
@@ -36,23 +31,6 @@ Initialize a tensor randomized with a normal distribution with mean=0, var=1:
     a = torch.randn(5, 7)
     print(a)
     print(a.size())
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    1.2406 -0.0144 -2.8357  1.2190 -0.1849  0.8774 -0.2754
-     0.7469 -0.3509  0.3155 -1.3848  1.3553  0.1593 -1.0409
-     0.2153 -0.7919  1.8971  0.7749  0.0996  0.1525 -1.0390
-     1.4466  0.4123  1.2837 -0.8550  0.4850  0.4178  1.4324
-    -1.3595 -0.2443 -0.0174 -1.7745  0.4021 -1.0561  0.1497
-    [torch.FloatTensor of size 5x7]
-
-    torch.Size([5, 7])
 
 
 .. note::
@@ -80,28 +58,6 @@ out-of-place version, and ``add_`` is the in-place version.
     print(a, b)
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    3.5000  3.5000  3.5000  3.5000  3.5000  3.5000  3.5000
-     3.5000  3.5000  3.5000  3.5000  3.5000  3.5000  3.5000
-     3.5000  3.5000  3.5000  3.5000  3.5000  3.5000  3.5000
-     3.5000  3.5000  3.5000  3.5000  3.5000  3.5000  3.5000
-     3.5000  3.5000  3.5000  3.5000  3.5000  3.5000  3.5000
-    [torch.FloatTensor of size 5x7]
- 
-     7.5000  7.5000  7.5000  7.5000  7.5000  7.5000  7.5000
-     7.5000  7.5000  7.5000  7.5000  7.5000  7.5000  7.5000
-     7.5000  7.5000  7.5000  7.5000  7.5000  7.5000  7.5000
-     7.5000  7.5000  7.5000  7.5000  7.5000  7.5000  7.5000
-     7.5000  7.5000  7.5000  7.5000  7.5000  7.5000  7.5000
-    [torch.FloatTensor of size 5x7]
-
-
 Some operations like ``narrow`` do not have in-place versions, and
 hence, ``.narrow_`` does not exist. Similarly, some operations like
 ``fill_`` do not have an out-of-place version, so ``.fill`` does not
@@ -121,11 +77,6 @@ one-indexed)
     b = a[0, 3]  # select 1st row, 4th column from a
 
 
-
-
-
-
-
 Tensors can be also indexed with Python's slicing
 
 
@@ -134,11 +85,6 @@ Tensors can be also indexed with Python's slicing
 
 
     b = a[:, 3:5]  # selects all rows, 4th column and  5th column from a
-
-
-
-
-
 
 
 No camel casing
@@ -158,21 +104,6 @@ anymore. For example ``indexAdd`` is now called ``index_add_``
 
 
 
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    1  1  1  1  1
-     1  1  1  1  1
-     1  1  1  1  1
-     1  1  1  1  1
-     1  1  1  1  1
-    [torch.FloatTensor of size 5x5]
-
-
-
 .. code-block:: python
 
 
@@ -183,40 +114,10 @@ anymore. For example ``indexAdd`` is now called ``index_add_``
 
 
 
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    10  100
-      10  100
-      10  100
-      10  100
-      10  100
-    [torch.FloatTensor of size 5x2]
-
-
-
 .. code-block:: python
 
     x.index_add_(1, torch.LongTensor([4, 0]), z)
     print(x)
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    101    1    1    1   11
-     101    1    1    1   11
-     101    1    1    1   11
-     101    1    1    1   11
-     101    1    1    1   11
-    [torch.FloatTensor of size 5x5]
 
 
 Numpy Bridge
@@ -239,36 +140,11 @@ Converting torch Tensor to numpy Array
 
 
 
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    1
-     1
-     1
-     1
-     1
-    [torch.FloatTensor of size 5]
-
-
-
 .. code-block:: python
 
 
     b = a.numpy()
     print(b)
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    [ 1.  1.  1.  1.  1.]
 
 
 
@@ -278,23 +154,6 @@ Converting torch Tensor to numpy Array
     print(a)
     print(b) 	# see how the numpy array changed in value
 
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    2
-     2
-     2
-     2
-     2
-    [torch.FloatTensor of size 5]
-
-    [ 2.  2.  2.  2.  2.]
 
 
 Converting numpy Array to torch Tensor
@@ -311,23 +170,6 @@ Converting numpy Array to torch Tensor
     np.add(a, 1, out=a)
     print(a)
     print(b)  # see how changing the np array changed the torch Tensor automatically
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    [ 2.  2.  2.  2.  2.]
-
-     2
-     2
-     2
-     2
-     2
-    [torch.DoubleTensor of size 5]
 
 
 All the Tensors on the CPU except a CharTensor support converting to
@@ -354,17 +196,7 @@ from the CPU to GPU will retain its underlying type.
         # transfers it to CPU, back to
         # being a torch.LongTensor
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    <class 'torch.cuda.LongTensor'>
-
-
-**Total running time of the script:** ( 0 minutes  0.004 seconds)
+**Total running time of the script:** ( 0 minutes  0.000 seconds)
 
 
 

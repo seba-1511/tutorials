@@ -43,11 +43,6 @@ DataParallel
             return x
 
 
-
-
-
-
-
 The code does not need to be changed in CPU-mode.
 
 The documentation for DataParallel is
@@ -88,11 +83,6 @@ these collectives
         return nn.parallel.gather(outputs, output_device)
 
 
-
-
-
-
-
 Part of the model on CPU and part on the GPU
 --------------------------------------------
 
@@ -125,11 +115,6 @@ is on the CPU and part on the GPU
             return x
 
 
-
-
-
-
-
 This was a small introduction to PyTorch for former Torch users.
 There’s a lot more to learn.
 
@@ -157,7 +142,7 @@ Also look at
 .. _Chat with other users on Slack: http://pytorch.slack.com/messages/beginner/
 
 
-**Total running time of the script:** ( 0 minutes  0.001 seconds)
+**Total running time of the script:** ( 0 minutes  0.000 seconds)
 
 
 
